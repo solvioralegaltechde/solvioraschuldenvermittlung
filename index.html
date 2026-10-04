@@ -4,16 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- PROTEÇÃO LEGAL TEMPORÁRIA: Bloqueia o Google e os bots de advogados até teres a morada -->
     <meta name="robots" content="noindex, nofollow">
     
-    <!-- SEO & METADADOS -->
     <title>Solviora | Technology for Humans</title>
     <meta name="description" content="Solviora builds digital products that solve real human problems, making technology more accessible, useful and meaningful. Based in Dortmund.">
     <meta name="author" content="Miguel Gomes | Solviora UG">
     <meta name="theme-color" content="#05070a">
 
-    <!-- OPEN GRAPH (PARTILHA NO WHATSAPP / LINKEDIN) -->
     <meta property="og:title" content="Solviora | Technology for Humans">
     <meta property="og:description" content="Building a growing ecosystem of human-centered digital products from Dortmund.">
     <meta property="og:type" content="website">
@@ -31,7 +28,6 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
         body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
-        /* PERFORMANCE: GPU Animation */
         .ambient-bg {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
             background: radial-gradient(circle at 20% 40%, rgba(234, 179, 8, 0.05) 0%, transparent 50%),
@@ -41,7 +37,6 @@
         }
         @keyframes breathe { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
 
-        /* HEADER */
         header {
             background: rgba(5, 7, 10, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color);
             padding: 15px 20px; display: flex; justify-content: space-between; align-items: center;
@@ -55,7 +50,6 @@
         .action-btn { background: none; border: none; color: var(--text-muted); display: flex; align-items: center; gap: 6px; font-size: 0.9rem; font-weight: 700; cursor: pointer; }
         .action-btn:hover, .action-btn.active { color: var(--accent-gold); }
         
-        /* LANG POPUP */
         .lang-container { position: relative; }
         .lang-popup {
             display: none; position: absolute; top: 35px; right: 0; background: var(--card-bg);
@@ -67,7 +61,6 @@
         .lang-popup button:hover { background: rgba(234, 179, 8, 0.1); color: var(--accent-gold); }
         @keyframes fadeScale { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
-        /* MOBILE MENU */
         .mobile-menu {
             display: none; position: fixed; top: 60px; left: 0; width: 100%; height: calc(100vh - 60px);
             background: rgba(5, 7, 10, 0.98); backdrop-filter: blur(15px); z-index: 999;
@@ -76,7 +69,6 @@
         .mobile-menu a { color: var(--text-main); text-decoration: none; font-size: 1.5rem; font-weight: 600; }
         .mobile-menu a:hover { color: var(--accent-gold); }
 
-        /* HERO */
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         .hero { padding: 80px 20px 60px 20px; text-align: center; }
         .badge {
@@ -91,7 +83,6 @@
         .hero h1 span { background: linear-gradient(135deg, var(--accent-gold) 0%, #fff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 40px auto; }
 
-        /* BOTÕES */
         .btn-group { display: flex; flex-direction: column; gap: 15px; max-width: 300px; margin: 0 auto; }
         .btn {
             background: var(--accent-gold); color: #000; padding: 18px 24px; border-radius: 12px;
@@ -109,7 +100,6 @@
         .btn-outline::before { display: none; }
         .btn-outline:active { border-color: var(--accent-gold); }
 
-        /* CARDS & SECTIONS */
         section { padding: 60px 0; border-top: 1px solid var(--border-color); }
         .section-title { text-align: center; margin-bottom: 40px; font-size: 2rem; font-weight: 800; }
         .grid-3 { display: grid; grid-template-columns: 1fr; gap: 20px; }
@@ -121,7 +111,6 @@
         .card h3 { font-size: 1.4rem; margin-bottom: 12px; font-weight: 700; }
         .card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
 
-        /* DISCLAIMER LEGAL ANTI-INKASSO */
         .legal-disclaimer {
             margin-top: 15px; padding: 12px; background: rgba(255, 59, 48, 0.05);
             border-left: 3px solid #ff3b30; border-radius: 4px;
@@ -175,7 +164,6 @@
     </nav>
 
     <main class="container">
-        <!-- HERO -->
         <section class="hero" style="border-top: none;">
             <div class="badge"><div class="dot" aria-hidden="true"></div><span data-i18n="hero_badge">Born in Dortmund. Built for Humans.</span></div>
             <h1 data-i18n-html="hero_title">Technology for <span>Humans</span></h1>
@@ -186,7 +174,6 @@
             </div>
         </section>
 
-        <!-- PRODUCTS COM AVISO LEGAL -->
         <section id="products">
             <h2 class="section-title" data-i18n="products_title">Our Products</h2>
             <div class="grid-3">
@@ -200,7 +187,6 @@
                     <h3 data-i18n="prod2_title">Connecting Creditors & Debtors</h3>
                     <p data-i18n="prod2_desc">A digital platform to facilitate communication between creditors and debtors.</p>
                     
-                    <!-- AVISO ANTI-INKASSO ESTATÚRIO -->
                     <div class="legal-disclaimer" data-i18n="legal_disclaimer">
                         <strong>Important:</strong> Solviora acts exclusively as a software (SaaS) provider. We do not provide legal advice, financial advice, or debt collection (Inkasso) services.
                     </div>
@@ -213,7 +199,6 @@
             </div>
         </section>
 
-        <!-- IMPRESSUM LEGAL ESTRUTURADO -->
         <section id="impressum">
             <div class="card" style="padding: 40px; margin-top: 20px;">
                 <h2 style="color: var(--accent-gold); margin-bottom: 20px;" data-i18n="nav_impressum">Legal Notice / Impressum</h2>
@@ -250,7 +235,6 @@
         <ul class="footer-links">
             <li><a href="#products" data-i18n="nav_products">Products</a></li>
             <li><a href="#impressum" data-i18n="nav_impressum">Impressum</a></li>
-            <!-- O link dos AGBs está pronto a ativar quando precisares -->
             <li><a href="#impressum" style="opacity: 0.5;">AGB (Coming Soon)</a></li>
         </ul>
         <p>&copy; 2026 Solviora UG. All rights reserved.</p>
