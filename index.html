@@ -3,8 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Solviora — Technology for Humans.">
+    
+    <!-- SEO & METADADOS BÁSICOS -->
     <title>Solviora | Technology for Humans</title>
+    <meta name="description" content="Solviora builds digital products that solve real human problems, making technology more accessible, useful and meaningful. Based in Dortmund.">
+    <meta name="author" content="Miguel Gomes | Solviora UG">
+    <meta name="theme-color" content="#05070a">
+
+    <!-- OPEN GRAPH (WHATSAPP, LINKEDIN, TELEGRAM) -->
+    <meta property="og:title" content="Solviora | Technology for Humans">
+    <meta property="og:description" content="Building a growing ecosystem of human-centered digital products from Dortmund.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://solvioralegaltechde.github.io/solvioraschuldenvermittlung/">
+    
+    <!-- JSON-LD (DADOS ESTRUTURADOS PARA O GOOGLE) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Solviora UG (haftungsbeschränkt) i.G.",
+      "url": "https://solvioralegaltechde.github.io/solvioraschuldenvermittlung/",
+      "founder": {
+        "@type": "Person",
+        "name": "Miguel Gomes"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Dortmund",
+        "addressCountry": "DE"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Support",
+        "email": "info@solviora.eu"
+      }
+    }
+    </script>
+
     <style>
         :root {
             --bg-dark: #05070a;
@@ -14,22 +49,22 @@
             --text-muted: #94a3b8;
             --accent-gold: #eab308;
             --accent-gold-hover: #facc15;
-            --glow: rgba(234, 179, 8, 0.15);
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
         
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
         body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
-        /* FUNDO ANIMADO */
+        /* PERFORMANCE: Animação via GPU (transform) */
         .ambient-bg {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
             background: radial-gradient(circle at 20% 40%, rgba(234, 179, 8, 0.05) 0%, transparent 50%),
                         radial-gradient(circle at 80% 60%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
             animation: breathe 15s ease-in-out infinite alternate;
+            will-change: transform;
         }
         @keyframes breathe { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
 
-        /* HEADER & MENUS */
+        /* HEADER */
         header {
             background: rgba(5, 7, 10, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color);
             padding: 15px 20px; display: flex; justify-content: space-between; align-items: center;
@@ -43,18 +78,19 @@
         .action-btn { background: none; border: none; color: var(--text-muted); display: flex; align-items: center; gap: 6px; font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: color 0.2s; }
         .action-btn:hover, .action-btn.active { color: var(--accent-gold); }
         
+        /* LANG POPUP */
         .lang-container { position: relative; }
         .lang-popup {
             display: none; position: absolute; top: 35px; right: 0; background: var(--card-bg);
             border: 1px solid var(--border-color); border-radius: 8px; flex-direction: column;
-            overflow: hidden; backdrop-filter: blur(10px); min-width: 80px;
+            overflow: hidden; backdrop-filter: blur(10px); min-width: 80px; transform-origin: top right;
         }
-        .lang-popup.show { display: flex; animation: slideDown 0.2s ease-out; }
+        .lang-popup.show { display: flex; animation: fadeScale 0.2s ease-out; }
         .lang-popup button { background: none; border: none; color: var(--text-main); padding: 12px; font-size: 0.85rem; font-weight: 600; cursor: pointer; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .lang-popup button:hover { background: rgba(234, 179, 8, 0.1); color: var(--accent-gold); }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeScale { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
-        /* MENU MOBILE (OVERLAY) */
+        /* MOBILE MENU */
         .mobile-menu {
             display: none; position: fixed; top: 60px; left: 0; width: 100%; height: calc(100vh - 60px);
             background: rgba(5, 7, 10, 0.98); backdrop-filter: blur(15px); z-index: 999;
@@ -63,7 +99,7 @@
         .mobile-menu a { color: var(--text-main); text-decoration: none; font-size: 1.5rem; font-weight: 600; transition: color 0.2s; }
         .mobile-menu a:hover { color: var(--accent-gold); }
 
-        /* HERO SECTION */
+        /* HERO & BADGE */
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         .hero { padding: 80px 20px 60px 20px; text-align: center; }
         
@@ -72,69 +108,65 @@
             color: var(--accent-gold); border: 1px solid rgba(234, 179, 8, 0.2); padding: 8px 18px;
             border-radius: 30px; font-size: 0.85rem; font-weight: 600; margin-bottom: 30px;
         }
-        .badge .dot { width: 6px; height: 6px; background: var(--accent-gold); border-radius: 50%; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(234, 179, 8, 0); } 100% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0); } }
+        /* PERFORMANCE: Opacity em vez de box-shadow */
+        .badge .dot { width: 6px; height: 6px; background: var(--accent-gold); border-radius: 50%; animation: pulseOpacity 2s infinite; }
+        @keyframes pulseOpacity { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
         
-        /* CORREÇÃO DO TÍTULO (Evitar sobreposição) */
-        .hero h1 { 
-            font-size: clamp(2.2rem, 8vw, 3.8rem); /* Tipografia fluida, adapta-se ao telemóvel */
-            margin-bottom: 25px; font-weight: 900; line-height: 1.2; letter-spacing: -1px; 
-            word-wrap: break-word; /* Proteção extra para alemão */
-        }
+        .hero h1 { font-size: clamp(2.2rem, 8vw, 3.8rem); margin-bottom: 25px; font-weight: 900; line-height: 1.2; letter-spacing: -1px; word-wrap: break-word; }
         .hero h1 span { background: linear-gradient(135deg, var(--accent-gold) 0%, #fff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 40px auto; }
 
-        /* BOTÕES */
+        /* BOTÕES 60FPS */
         .btn-group { display: flex; flex-direction: column; gap: 15px; max-width: 300px; margin: 0 auto; }
         .btn {
             background: var(--accent-gold); color: #000; padding: 18px 24px; border-radius: 12px;
             font-weight: 800; font-size: 1rem; text-decoration: none; border: none; cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; display: inline-block; text-align: center; width: 100%;
+            transition: transform 0.2s; position: relative; overflow: hidden; display: block; text-align: center; width: 100%;
         }
+        /* GPU Accelerated Swipe */
         .btn::before {
-            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); animation: swipe 3s infinite;
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: translateX(-100%); animation: swipeGpu 3s infinite; will-change: transform;
         }
-        @keyframes swipe { 0% { left: -100%; } 20%, 100% { left: 100%; } }
-        .btn:hover, .btn:active { transform: scale(0.97); box-shadow: 0 10px 25px rgba(234, 179, 8, 0.3); }
+        @keyframes swipeGpu { 0% { transform: translateX(-100%); } 20%, 100% { transform: translateX(100%); } }
+        .btn:hover, .btn:active { transform: scale(0.97); }
         .btn-outline { background: transparent; color: var(--text-main); border: 1px solid var(--border-color); }
         .btn-outline::before { display: none; }
         .btn-outline:active { border-color: var(--accent-gold); }
 
-        /* ESTRUTURA GERAL */
+        /* CARDS */
         section { padding: 60px 0; border-top: 1px solid var(--border-color); }
         .section-title { text-align: center; margin-bottom: 40px; font-size: 2rem; font-weight: 800; }
         .grid-3 { display: grid; grid-template-columns: 1fr; gap: 20px; }
         @media(min-width: 768px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } .btn-group { flex-direction: row; max-width: 500px; } }
         
-        .card {
-            background: var(--card-bg); backdrop-filter: blur(10px); border: 1px solid var(--border-color);
-            border-radius: 16px; padding: 30px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative; overflow: hidden;
-        }
-        .card:hover { border-color: rgba(234, 179, 8, 0.5); transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0,0,0,0.4), inset 0 0 20px rgba(234, 179, 8, 0.05); }
+        .card { background: var(--card-bg); backdrop-filter: blur(10px); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px; transition: transform 0.3s, border-color 0.3s; }
+        .card:hover { border-color: rgba(234, 179, 8, 0.5); transform: translateY(-5px); }
         .card-tag { font-size: 0.75rem; color: var(--accent-gold); font-weight: 800; letter-spacing: 1px; margin-bottom: 12px; display: block; }
         .card h3 { font-size: 1.4rem; margin-bottom: 12px; font-weight: 700; }
         .card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
 
-        /* INVESTORS & DORTMUND */
-        .highlight-box { background: linear-gradient(135deg, var(--card-bg) 0%, rgba(30, 41, 59, 0.5) 100%); border: 1px solid var(--accent-gold); border-radius: 16px; padding: 50px 20px; text-align: center; }
-        .highlight-box h2 { font-size: 1.8rem; margin-bottom: 15px; }
-
-        /* FOOTER */
+        .highlight-box { background: linear-gradient(135deg, var(--card-bg) 0%, rgba(30, 41, 59, 0.5) 100%); border: 1px solid var(--border-color); border-radius: 16px; padding: 50px 20px; text-align: center; }
+        
         footer { border-top: 1px solid var(--border-color); padding: 40px 20px; text-align: center; font-size: 0.85rem; color: var(--text-muted); }
         .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 20px 0; list-style: none; }
         .footer-links a { color: var(--text-muted); text-decoration: none; font-weight: 600; }
         .footer-links a:hover { color: var(--accent-gold); }
+
+        /* ACESSIBILIDADE: Desativar animações para quem precisa */
+        @media (prefers-reduced-motion: reduce) {
+            * { animation: none !important; transition: none !important; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="ambient-bg"></div>
+    <div class="ambient-bg" aria-hidden="true"></div>
 
     <header>
         <div class="logo-area">
-            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                 <path d="M9 12l2 2 4-4"></path>
             </svg>
@@ -142,45 +174,41 @@
         </div>
         
         <div class="header-actions">
-            <!-- Language Globe -->
             <div class="lang-container">
-                <button class="action-btn lang-btn" onclick="toggleLangPopup()">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                <button class="action-btn lang-btn" id="langToggleBtn" aria-label="Select Language" aria-expanded="false">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
                     <span id="currentLang">EN</span>
                 </button>
-                <div class="lang-popup" id="langPopup">
-                    <button onclick="changeLang('EN')">🇺🇸 EN</button>
-                    <button onclick="changeLang('DE')">🇩🇪 DE</button>
-                    <button onclick="changeLang('TR')">🇹🇷 TR</button>
-                    <button onclick="changeLang('PT')">🇵🇹 PT</button>
-                    <button onclick="changeLang('AR')">🇦🇪 AR</button>
+                <div class="lang-popup" id="langPopup" role="menu">
+                    <button role="menuitem" onclick="changeLang('EN')">🇺🇸 EN</button>
+                    <button role="menuitem" onclick="changeLang('DE')">🇩🇪 DE</button>
+                    <button role="menuitem" onclick="changeLang('TR')">🇹🇷 TR</button>
+                    <button role="menuitem" onclick="changeLang('PT')">🇵🇹 PT</button>
+                    <button role="menuitem" onclick="changeLang('AR')">🇦🇪 AR</button>
                 </div>
             </div>
-            <!-- Hamburger Menu -->
-            <button class="action-btn" onclick="toggleMenu()">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            
+            <button class="action-btn" id="menuToggleBtn" aria-label="Open Menu" aria-expanded="false">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </button>
         </div>
     </header>
 
-    <!-- MOBILE MENU OVERLAY -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#about" onclick="toggleMenu()" data-i18n="nav_about">About</a>
-        <a href="#products" onclick="toggleMenu()" data-i18n="nav_products">Products</a>
-        <a href="#technology" onclick="toggleMenu()" data-i18n="nav_tech">Technology</a>
-        <a href="#investors" onclick="toggleMenu()" data-i18n="nav_investors">Investors</a>
-        <a href="#contact" onclick="toggleMenu()" data-i18n="nav_contact">Contact</a>
-    </div>
+    <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <a href="#about" class="menu-link" data-i18n="nav_about">About</a>
+        <a href="#products" class="menu-link" data-i18n="nav_products">Products</a>
+        <a href="#technology" class="menu-link" data-i18n="nav_tech">Technology</a>
+        <a href="#investors" class="menu-link" data-i18n="nav_investors">Investors</a>
+        <a href="#contact" class="menu-link" data-i18n="nav_contact">Contact</a>
+    </nav>
 
-    <div class="container">
+    <main class="container">
         
-        <!-- HERO -->
         <section class="hero" style="border-top: none;">
             <div class="badge">
-                <div class="dot"></div>
+                <div class="dot" aria-hidden="true"></div>
                 <span data-i18n="hero_badge">Born in Dortmund. Built for Humans.</span>
             </div>
-            <!-- Sem quebras de linha manuais (<br>), o CSS 'clamp' gere o tamanho! -->
             <h1 data-i18n-html="hero_title">Technology for <span>Humans</span></h1>
             <p data-i18n="hero_desc">We build digital products that solve real human problems — making technology more accessible, useful and meaningful.</p>
             <div class="btn-group">
@@ -189,84 +217,72 @@
             </div>
         </section>
 
-        <!-- ABOUT -->
         <section id="about">
             <h2 class="section-title" data-i18n="about_title">One company. Multiple products. One purpose.</h2>
             <div class="grid-3">
-                <div class="card">
+                <article class="card">
                     <h3 data-i18n="about_card1_title">Human-Centered</h3>
                     <p data-i18n="about_card1_desc">Technology designed around people, focused on real experience and human well-being.</p>
-                </div>
-                <div class="card">
+                </article>
+                <article class="card">
                     <h3 data-i18n="about_card2_title">Accessible</h3>
                     <p data-i18n="about_card2_desc">Simple, intuitive and accessible solutions to empower users without barriers.</p>
-                </div>
-                <div class="card">
+                </article>
+                <article class="card">
                     <h3 data-i18n="about_card3_title">Scalable</h3>
                     <p data-i18n="about_card3_desc">Products built to grow robustly from Germany to Europe and the world.</p>
-                </div>
+                </article>
             </div>
         </section>
 
-        <!-- PRODUCTS -->
         <section id="products">
             <h2 class="section-title" data-i18n="products_title">Our Products</h2>
             <div class="grid-3">
-                <div class="card">
+                <article class="card">
                     <span class="card-tag">01 — DIGNITYPAY</span>
                     <h3 data-i18n="prod1_title">Financial Inclusion & Dignity</h3>
                     <p data-i18n="prod1_desc">A digital payment solution designed to help people in vulnerable situations access essential services safely.</p>
-                </div>
-                <div class="card">
+                </article>
+                <article class="card">
                     <span class="card-tag">02 — DEBT RESOLUTION</span>
                     <h3 data-i18n="prod2_title">Connecting Creditors & Debtors</h3>
                     <p data-i18n="prod2_desc">A digital platform designed to facilitate communication between creditors and debtors securely and transparently.</p>
-                </div>
-                <div class="card">
+                </article>
+                <article class="card">
                     <span class="card-tag">03 — SOLVIORA STUDIO</span>
                     <h3 data-i18n="prod3_title">Digital Creation Made Simpler</h3>
                     <p data-i18n="prod3_desc">Digital tools and AI workflows designed to help creators and small businesses build and scale effectively.</p>
-                </div>
+                </article>
             </div>
         </section>
 
-        <!-- DORTMUND & ECOSYSTEM -->
         <section>
-            <div class="highlight-box" style="border-color: var(--border-color); background: var(--card-bg);">
+            <div class="highlight-box">
                 <h2 data-i18n="dortmund_title">Born in Dortmund. Built for the World.</h2>
                 <p style="color: var(--text-muted); margin-bottom: 20px;" data-i18n="dortmund_desc">Dortmund is where Solviora begins. A diverse, international city reflecting the human diversity we serve.</p>
                 <div style="font-weight: bold; color: var(--accent-gold);">Dortmund → Germany → Europe → Global</div>
             </div>
         </section>
 
-        <!-- TECHNOLOGY -->
         <section id="technology">
             <h2 class="section-title" data-i18n="nav_tech">Technology</h2>
             <div class="grid-3">
-                <div class="card" style="text-align: center; padding: 20px;">
-                    <h3 data-i18n="tech1">AI Integration</h3>
-                </div>
-                <div class="card" style="text-align: center; padding: 20px;">
-                    <h3 data-i18n="tech2">Secure Infrastructure</h3>
-                </div>
-                <div class="card" style="text-align: center; padding: 20px;">
-                    <h3 data-i18n="tech3">Scalable Cloud Tech</h3>
-                </div>
+                <div class="card" style="text-align: center; padding: 20px;"><h3 data-i18n="tech1">AI Integration</h3></div>
+                <div class="card" style="text-align: center; padding: 20px;"><h3 data-i18n="tech2">Secure Infrastructure</h3></div>
+                <div class="card" style="text-align: center; padding: 20px;"><h3 data-i18n="tech3">Scalable Cloud Tech</h3></div>
             </div>
         </section>
 
-        <!-- INVESTOR ROOM -->
         <section id="investors">
-            <div class="highlight-box">
+            <div class="highlight-box" style="border-color: var(--accent-gold);">
                 <h2 data-i18n="invest_title">Building the Future</h2>
                 <p style="color: var(--text-muted); margin-bottom: 25px; max-width: 600px; margin-left: auto; margin-right: auto;" data-i18n="invest_desc">
                     Solviora is developing a growing portfolio of digital products from Dortmund, with ambitions to scale across Europe and beyond.
                 </p>
-                <a href="mailto:info@solviora.eu" class="btn" style="max-width: 250px;" data-i18n="invest_btn">Investor Room →</a>
+                <a href="mailto:info@solviora.eu" class="btn" style="max-width: 250px; margin: 0 auto;" data-i18n="invest_btn">Investor Room →</a>
             </div>
         </section>
 
-        <!-- LEGAL -->
         <section id="contact" style="padding-bottom: 0;">
             <div class="card" style="padding: 30px;">
                 <h3 data-i18n="legal_title">Legal Notice / Impressum</h3>
@@ -274,9 +290,8 @@
                 <p data-i18n="legal_contact"><strong>Contact:</strong> info@solviora.eu</p>
             </div>
         </section>
-    </div>
+    </main>
 
-    <!-- FOOTER WITH LINKS -->
     <footer>
         <div style="font-weight: 800; font-size: 1.2rem; color: var(--text-main);">SOLVIORA</div>
         <div style="color: var(--accent-gold); margin-bottom: 10px;">Technology for Humans</div>
@@ -287,148 +302,70 @@
             <li><a href="#technology" data-i18n="nav_tech">Technology</a></li>
             <li><a href="#investors" data-i18n="nav_investors">Investors</a></li>
         </ul>
-        
         <p>&copy; 2026 Solviora UG. All rights reserved.</p>
     </footer>
 
     <script>
-        // Lógica do Menu Hambúrguer
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-        }
+        // JS Modular e Otimizado
+        document.addEventListener('DOMContentLoaded', () => {
+            const langBtn = document.getElementById('langToggleBtn');
+            const langPopup = document.getElementById('langPopup');
+            const menuBtn = document.getElementById('menuToggleBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuLinks = document.querySelectorAll('.menu-link');
 
-        // Lógica do Pop-up de Idioma
-        function toggleLangPopup() {
-            document.getElementById('langPopup').classList.toggle('show');
-        }
-        
-        window.onclick = function(event) {
-            if (!event.target.closest('.lang-container')) {
-                const popup = document.getElementById('langPopup');
-                if (popup) popup.classList.remove('show');
-            }
-        }
+            // Event Listeners (Melhor prática a11y)
+            langBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isExpanded = langBtn.getAttribute('aria-expanded') === 'true';
+                langBtn.setAttribute('aria-expanded', !isExpanded);
+                langPopup.classList.toggle('show');
+            });
 
-        // Sistema Completo de Tradução
+            menuBtn.addEventListener('click', () => {
+                const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+                menuBtn.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.style.display = isExpanded ? 'none' : 'flex';
+                mobileMenu.setAttribute('aria-hidden', isExpanded);
+            });
+
+            menuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.style.display = 'none';
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                    mobileMenu.setAttribute('aria-hidden', 'true');
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.lang-container')) {
+                    langPopup.classList.remove('show');
+                    langBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+
         const translations = {
-            EN: {
-                nav_about: "About", nav_products: "Products", nav_tech: "Technology", nav_investors: "Investors", nav_contact: "Contact",
-                hero_badge: "Born in Dortmund. Built for Humans.",
-                hero_title: "Technology for <span>Humans</span>",
-                hero_desc: "We build digital products that solve real human problems — making technology more accessible, useful and meaningful.",
-                explore_btn: "Explore Products", discover_btn: "Discover Solviora",
-                about_title: "One company. Multiple products. One purpose.",
-                about_card1_title: "Human-Centered", about_card1_desc: "Technology designed around people, focused on real experience and human well-being.",
-                about_card2_title: "Accessible", about_card2_desc: "Simple, intuitive and accessible solutions to empower users without barriers.",
-                about_card3_title: "Scalable", about_card3_desc: "Products built to grow robustly from Germany to Europe and the world.",
-                products_title: "Our Products",
-                prod1_title: "Financial Inclusion & Dignity", prod1_desc: "A digital payment solution designed to help people in vulnerable situations access essential services safely.",
-                prod2_title: "Connecting Creditors & Debtors", prod2_desc: "A digital platform designed to facilitate communication between creditors and debtors securely and transparently.",
-                prod3_title: "Digital Creation Made Simpler", prod3_desc: "Digital tools and AI workflows designed to help creators and small businesses build and scale effectively.",
-                dortmund_title: "Born in Dortmund. Built for the World.", dortmund_desc: "Dortmund is where Solviora begins. A diverse, international city reflecting the human diversity we serve.",
-                tech1: "AI Integration", tech2: "Secure Infrastructure", tech3: "Scalable Cloud Tech",
-                invest_title: "Building the Future", invest_desc: "Solviora is developing a growing portfolio of digital products from Dortmund, with ambitions to scale across Europe and beyond.", invest_btn: "Investor Room →",
-                legal_title: "Legal Notice / Impressum", legal_contact: "Contact: info@solviora.eu"
-            },
-            DE: {
-                nav_about: "Über uns", nav_products: "Produkte", nav_tech: "Technologie", nav_investors: "Investoren", nav_contact: "Kontakt",
-                hero_badge: "Geboren in Dortmund. Für Menschen gemacht.",
-                hero_title: "Technologie für <span>Menschen</span>",
-                hero_desc: "Wir entwickeln digitale Produkte, die echte menschliche Probleme lösen — für eine zugänglichere Technologie.",
-                explore_btn: "Produkte entdecken", discover_btn: "Solviora entdecken",
-                about_title: "Ein Unternehmen. Viele Produkte. Ein Ziel.",
-                about_card1_title: "Menschenzentriert", about_card1_desc: "Technologie, die sich um den Menschen dreht und auf das menschliche Wohlbefinden ausgerichtet ist.",
-                about_card2_title: "Zugänglich", about_card2_desc: "Einfache, intuitive und barrierefreie Lösungen zur Stärkung der Nutzer.",
-                about_card3_title: "Skalierbar", about_card3_desc: "Produkte, die entwickelt wurden, um von Deutschland aus nach Europa und in die Welt zu wachsen.",
-                products_title: "Unsere Produkte",
-                prod1_title: "Finanzielle Inklusion & Würde", prod1_desc: "Eine digitale Zahlungslösung für Menschen in prekären Situationen, um sicheren Zugang zu Basisdienstleistungen zu erhalten.",
-                prod2_title: "Gläubiger & Schuldner verbinden", prod2_desc: "Eine Plattform, um die Kommunikation zwischen Gläubigern und Schuldnern sicher und transparent zu erleichtern.",
-                prod3_title: "Digitale Kreation vereinfacht", prod3_desc: "Digitale Tools und KI-Workflows, um kreativen Köpfen und kleinen Unternehmen beim Skalieren zu helfen.",
-                dortmund_title: "Geboren in Dortmund. Gebaut für die Welt.", dortmund_desc: "Dortmund ist der Ausgangspunkt von Solviora. Eine vielfältige, internationale Stadt.",
-                tech1: "KI-Integration", tech2: "Sichere Infrastruktur", tech3: "Skalierbare Cloud",
-                invest_title: "Die Zukunft bauen", invest_desc: "Solviora entwickelt ein wachsendes Portfolio digitaler Produkte, mit dem Ziel, europaweit zu skalieren.", invest_btn: "Invest Room →",
-                legal_title: "Impressum", legal_contact: "Kontakt: info@solviora.eu"
-            },
-            PT: {
-                nav_about: "Sobre", nav_products: "Produtos", nav_tech: "Tecnologia", nav_investors: "Investidores", nav_contact: "Contacto",
-                hero_badge: "Nascido em Dortmund. Feito para Humanos.",
-                hero_title: "Tecnologia para <span>Humanos</span>",
-                hero_desc: "Construímos produtos digitais que resolvem problemas reais — tornando a tecnologia acessível, útil e com propósito.",
-                explore_btn: "Explorar Produtos", discover_btn: "Descobrir Solviora",
-                about_title: "Uma empresa. Vários produtos. Um propósito.",
-                about_card1_title: "Centrado no Humano", about_card1_desc: "Tecnologia desenhada à volta das pessoas, focada na experiência real e bem-estar humano.",
-                about_card2_title: "Acessível", about_card2_desc: "Soluções simples, intuitivas e acessíveis para capacitar utilizadores sem barreiras.",
-                about_card3_title: "Escalável", about_card3_desc: "Produtos construídos para crescer de forma robusta da Alemanha para a Europa e para o mundo.",
-                products_title: "Os Nossos Produtos",
-                prod1_title: "Inclusão Financeira & Dignidade", prod1_desc: "Uma solução de pagamento desenhada para ajudar pessoas vulneráveis a aceder a serviços essenciais com segurança.",
-                prod2_title: "Conectando Credores & Devedores", prod2_desc: "Plataforma digital desenhada para facilitar a comunicação entre credores e devedores de forma segura.",
-                prod3_title: "Criação Digital Mais Simples", prod3_desc: "Ferramentas digitais e fluxos de IA para ajudar criadores e pequenos negócios a escalar eficientemente.",
-                dortmund_title: "Nascido em Dortmund. Feito para o Mundo.", dortmund_desc: "Dortmund é onde a Solviora começa. Uma cidade internacional que reflete a diversidade.",
-                tech1: "Integração de IA", tech2: "Infraestrutura Segura", tech3: "Cloud Escalável",
-                invest_title: "Construir o Futuro", invest_desc: "A Solviora desenvolve um portfólio crescente de produtos, com ambição de escalar pela Europa e mundo.", invest_btn: "Invest Room →",
-                legal_title: "Aviso Legal / Impressum", legal_contact: "Contacto: info@solviora.eu"
-            },
-            TR: {
-                nav_about: "Hakkımızda", nav_products: "Ürünler", nav_tech: "Teknoloji", nav_investors: "Yatırımcılar", nav_contact: "İletişim",
-                hero_badge: "Dortmund'da Doğdu. İnsanlar İçin.",
-                hero_title: "<span>İnsanlar</span> İçin Teknoloji",
-                hero_desc: "Gerçek insan problemlerini çözen dijital ürünler inşa ediyoruz — teknolojiyi daha erişilebilir kılıyoruz.",
-                explore_btn: "Ürünleri İncele", discover_btn: "Solviora'yı Keşfet",
-                about_title: "Tek şirket. Çoklu ürün. Tek amaç.",
-                about_card1_title: "İnsan Odaklı", about_card1_desc: "İnsanlar etrafında tasarlanan, gerçek deneyime ve refaha odaklanan teknoloji.",
-                about_card2_title: "Erişilebilir", about_card2_desc: "Kullanıcıları engelsiz bir şekilde güçlendirmek için basit, sezgisel çözümler.",
-                about_card3_title: "Ölçeklenebilir", about_card3_desc: "Almanya'dan Avrupa'ya ve dünyaya sağlam bir şekilde büyümek için inşa edilmiş ürünler.",
-                products_title: "Ürünlerimiz",
-                prod1_title: "Finansal Katılım & İnsan Onuru", prod1_desc: "Hassas durumlardaki kişilerin temel hizmetlere erişmesine yardımcı olan ödeme çözümü.",
-                prod2_title: "Alacaklılar ve Borçluları Bağlamak", prod2_desc: "İletişimi güvenli ve şeffaf bir şekilde kolaylaştırmak için tasarlanmış dijital platform.",
-                prod3_title: "Dijital Üretim Kolaylaştı", prod3_desc: "Küçük işletmelerin etkili bir şekilde ölçeklenmesine yardımcı olan araçlar.",
-                dortmund_title: "Dortmund'da Doğdu. Dünya İçin.", dortmund_desc: "Dortmund, Solviora'nın başladığı yerdir. Çeşitlilik barındıran uluslararası bir şehir.",
-                tech1: "Yapay Zeka", tech2: "Güvenli Altyapı", tech3: "Ölçeklenebilir Bulut",
-                invest_title: "Geleceği İnşa Etmek", invest_desc: "Solviora, Avrupa ve ötesine ölçeklenme hırsıyla büyüyen bir dijital ürün portföyü geliştiriyor.", invest_btn: "Invest Room →",
-                legal_title: "Yasal Uyarı / Impressum", legal_contact: "İletişim: info@solviora.eu"
-            },
-            AR: {
-                nav_about: "معلومات عنا", nav_products: "منتجات", nav_tech: "تكنولوجيا", nav_investors: "المستثمرين", nav_contact: "اتصال",
-                hero_badge: "تأسست في دورتموند. بنيت للبشر.",
-                hero_title: "التكنولوجيا من أجل <span>البشر</span>",
-                hero_desc: "نحن نبني منتجات رقمية تحل مشاكل بشرية حقيقية — ونجعل التكنولوجيا أكثر سهولة وإفادة.",
-                explore_btn: "استكشف المنتجات", discover_btn: "اكتشف سولفيورا",
-                about_title: "شركة واحدة. منتجات متعددة. هدف واحد.",
-                about_card1_title: "محورها الإنسان", about_card1_desc: "تكنولوجيا مصممة حول الناس، تركز على التجربة الحقيقية ورفاهية الإنسان.",
-                about_card2_title: "يمكن الوصول إليها", about_card2_desc: "حلول بسيطة وبديهية وسهلة الوصول لتمكين المستخدمين دون حواجز.",
-                about_card3_title: "قابلة للتطوير", about_card3_desc: "منتجات مصممة للنمو بقوة من ألمانيا إلى أوروبا والعالم.",
-                products_title: "منتجاتنا",
-                prod1_title: "الشمول المالي والكرامة", prod1_desc: "حل دفع رقمي مصمم لمساعدة الأشخاص في المواقف الضعيفة على الوصول إلى الخدمات الأساسية بأمان.",
-                prod2_title: "ربط الدائنين والمدينين", prod2_desc: "منصة رقمية مصممة لتسهيل التواصل بين الدائنين والمدينين بشكل آمن وشفاف.",
-                prod3_title: "إنشاء رقمي أبسط", prod3_desc: "أدوات رقمية وسير عمل ذكاء اصطناعي لمساعدة المبدعين والشركات الصغيرة على البناء.",
-                dortmund_title: "تأسست في دورتموند. للعالم.", dortmund_desc: "دورتموند هي المكان الذي تبدأ منه سولفيورا. مدينة دولية تعكس التنوع.",
-                tech1: "الذكاء الاصطناعي", tech2: "بنية تحتية آمنة", tech3: "تقنية سحابية قابلة للتطوير",
-                invest_title: "بناء المستقبل", invest_desc: "تقوم سولفيورا بتطوير مجموعة متنامية من المنتجات الرقمية مع طموحات للتوسع في جميع أنحاء أوروبا.", invest_btn: "غرفة الاستثمار →",
-                legal_title: "إشعار قانوني / Impressum", legal_contact: "الاتصال: info@solviora.eu"
-            }
+            EN: { nav_about: "About", nav_products: "Products", nav_tech: "Technology", nav_investors: "Investors", nav_contact: "Contact", hero_badge: "Born in Dortmund. Built for Humans.", hero_title: "Technology for <span>Humans</span>", hero_desc: "We build digital products that solve real human problems — making technology more accessible, useful and meaningful.", explore_btn: "Explore Products", discover_btn: "Discover Solviora", about_title: "One company. Multiple products. One purpose.", about_card1_title: "Human-Centered", about_card1_desc: "Technology designed around people, focused on real experience and human well-being.", about_card2_title: "Accessible", about_card2_desc: "Simple, intuitive and accessible solutions to empower users without barriers.", about_card3_title: "Scalable", about_card3_desc: "Products built to grow robustly from Germany to Europe and the world.", products_title: "Our Products", prod1_title: "Financial Inclusion & Dignity", prod1_desc: "A digital payment solution designed to help people in vulnerable situations access essential services safely.", prod2_title: "Connecting Creditors & Debtors", prod2_desc: "A digital platform designed to facilitate communication between creditors and debtors securely and transparently.", prod3_title: "Digital Creation Made Simpler", prod3_desc: "Digital tools and AI workflows designed to help creators and small businesses build and scale effectively.", dortmund_title: "Born in Dortmund. Built for the World.", dortmund_desc: "Dortmund is where Solviora begins. A diverse, international city reflecting the human diversity we serve.", tech1: "AI Integration", tech2: "Secure Infrastructure", tech3: "Scalable Cloud Tech", invest_title: "Building the Future", invest_desc: "Solviora is developing a growing portfolio of digital products from Dortmund, with ambitions to scale across Europe and beyond.", invest_btn: "Investor Room →", legal_title: "Legal Notice / Impressum", legal_contact: "Contact: info@solviora.eu" },
+            DE: { nav_about: "Über uns", nav_products: "Produkte", nav_tech: "Technologie", nav_investors: "Investoren", nav_contact: "Kontakt", hero_badge: "Geboren in Dortmund. Für Menschen gemacht.", hero_title: "Technologie für <span>Menschen</span>", hero_desc: "Wir entwickeln digitale Produkte, die echte menschliche Probleme lösen — für eine zugänglichere Technologie.", explore_btn: "Produkte entdecken", discover_btn: "Solviora entdecken", about_title: "Ein Unternehmen. Viele Produkte. Ein Ziel.", about_card1_title: "Menschenzentriert", about_card1_desc: "Technologie, die sich um den Menschen dreht und auf das menschliche Wohlbefinden ausgerichtet ist.", about_card2_title: "Zugänglich", about_card2_desc: "Einfache, intuitive und barrierefreie Lösungen zur Stärkung der Nutzer.", about_card3_title: "Skalierbar", about_card3_desc: "Produkte, die entwickelt wurden, um von Deutschland aus nach Europa und in die Welt zu wachsen.", products_title: "Unsere Produkte", prod1_title: "Finanzielle Inklusion & Würde", prod1_desc: "Eine digitale Zahlungslösung für Menschen in prekären Situationen, um sicheren Zugang zu Basisdienstleistungen zu erhalten.", prod2_title: "Gläubiger & Schuldner verbinden", prod2_desc: "Eine Plattform, um die Kommunikation zwischen Gläubigern und Schuldnern sicher und transparent zu erleichtern.", prod3_title: "Digitale Kreation vereinfacht", prod3_desc: "Digitale Tools und KI-Workflows, um kreativen Köpfen und kleinen Unternehmen beim Skalieren zu helfen.", dortmund_title: "Geboren in Dortmund. Gebaut für die Welt.", dortmund_desc: "Dortmund ist der Ausgangspunkt von Solviora. Eine vielfältige, internationale Stadt.", tech1: "KI-Integration", tech2: "Sichere Infrastruktur", tech3: "Skalierbare Cloud", invest_title: "Die Zukunft bauen", invest_desc: "Solviora entwickelt ein wachsendes Portfolio digitaler Produkte, mit dem Ziel, europaweit zu skalieren.", invest_btn: "Invest Room →", legal_title: "Impressum", legal_contact: "Kontakt: info@solviora.eu" },
+            PT: { nav_about: "Sobre", nav_products: "Produtos", nav_tech: "Tecnologia", nav_investors: "Investidores", nav_contact: "Contacto", hero_badge: "Nascido em Dortmund. Feito para Humanos.", hero_title: "Tecnologia para <span>Humanos</span>", hero_desc: "Construímos produtos digitais que resolvem problemas reais — tornando a tecnologia acessível, útil e com propósito.", explore_btn: "Explorar Produtos", discover_btn: "Descobrir Solviora", about_title: "Uma empresa. Vários produtos. Um propósito.", about_card1_title: "Centrado no Humano", about_card1_desc: "Tecnologia desenhada à volta das pessoas, focada na experiência real e bem-estar humano.", about_card2_title: "Acessível", about_card2_desc: "Soluções simples, intuitivas e acessíveis para capacitar utilizadores sem barreiras.", about_card3_title: "Escalável", about_card3_desc: "Produtos construídos para crescer de forma robusta da Alemanha para a Europa e para o mundo.", products_title: "Os Nossos Produtos", prod1_title: "Inclusão Financeira & Dignidade", prod1_desc: "Uma solução de pagamento desenhada para ajudar pessoas vulneráveis a aceder a serviços essenciais com segurança.", prod2_title: "Conectando Credores & Devedores", prod2_desc: "Plataforma digital desenhada para facilitar a comunicação entre credores e devedores de forma segura.", prod3_title: "Criação Digital Mais Simples", prod3_desc: "Ferramentas digitais e fluxos de IA para ajudar criadores e pequenos negócios a escalar eficientemente.", dortmund_title: "Nascido em Dortmund. Feito para o Mundo.", dortmund_desc: "Dortmund é onde a Solviora começa. Uma cidade internacional que reflete a diversidade.", tech1: "Integração de IA", tech2: "Infraestrutura Segura", tech3: "Cloud Escalável", invest_title: "Construir o Futuro", invest_desc: "A Solviora desenvolve um portfólio crescente de produtos, com ambição de escalar pela Europa e mundo.", invest_btn: "Invest Room →", legal_title: "Aviso Legal / Impressum", legal_contact: "Contacto: info@solviora.eu" },
+            TR: { nav_about: "Hakkımızda", nav_products: "Ürünler", nav_tech: "Teknoloji", nav_investors: "Yatırımcılar", nav_contact: "İletişim", hero_badge: "Dortmund'da Doğdu. İnsanlar İçin.", hero_title: "<span>İnsanlar</span> İçin Teknoloji", hero_desc: "Gerçek insan problemlerini çözen dijital ürünler inşa ediyoruz — teknolojiyi daha erişilebilir kılıyoruz.", explore_btn: "Ürünleri İncele", discover_btn: "Solviora'yı Keşfet", about_title: "Tek şirket. Çoklu ürün. Tek amaç.", about_card1_title: "İnsan Odaklı", about_card1_desc: "İnsanlar etrafında tasarlanan, gerçek deneyime ve refaha odaklanan teknoloji.", about_card2_title: "Erişilebilir", about_card2_desc: "Kullanıcıları engelsiz bir şekilde güçlendirmek için basit, sezgisel çözümler.", about_card3_title: "Ölçeklenebilir", about_card3_desc: "Almanya'dan Avrupa'ya ve dünyaya sağlam bir şekilde büyümek için inşa edilmiş ürünler.", products_title: "Ürünlerimiz", prod1_title: "Finansal Katılım & İnsan Onuru", prod1_desc: "Hassas durumlardaki kişilerin temel hizmetlere erişmesine yardımcı olan ödeme çözümü.", prod2_title: "Alacaklılar ve Borçluları Bağlamak", prod2_desc: "İletişimi güvenli ve şeffaf bir şekilde kolaylaştırmak için tasarlanmış dijital platform.", prod3_title: "Dijital Üretim Kolaylaştı", prod3_desc: "Küçük işletmelerin etkili bir şekilde ölçeklenmesine yardımcı olan araçlar.", dortmund_title: "Dortmund'da Doğdu. Dünya İçin.", dortmund_desc: "Dortmund, Solviora'nın başladığı yerdir. Çeşitlilik barındıran uluslararası bir şehir.", tech1: "Yapay Zeka", tech2: "Güvenli Altyapı", tech3: "Ölçeklenebilir Bulut", invest_title: "Geleceği İnşa Etmek", invest_desc: "Solviora, Avrupa ve ötesine ölçeklenme hırsıyla büyüyen bir dijital ürün portföyü geliştiriyor.", invest_btn: "Invest Room →", legal_title: "Yasal Uyarı / Impressum", legal_contact: "İletişim: info@solviora.eu" },
+            AR: { nav_about: "معلومات عنا", nav_products: "منتجات", nav_tech: "تكنولوجيا", nav_investors: "المستثمرين", nav_contact: "اتصال", hero_badge: "تأسست في دورتموند. بنيت للبشر.", hero_title: "التكنولوجيا من أجل <span>البشر</span>", hero_desc: "نحن نبني منتجات رقمية تحل مشاكل بشرية حقيقية — ونجعل التكنولوجيا أكثر سهولة وإفادة.", explore_btn: "استكشف المنتجات", discover_btn: "اكتشف سولفيورا", about_title: "شركة واحدة. منتجات متعددة. هدف واحد.", about_card1_title: "محورها الإنسان", about_card1_desc: "تكنولوجيا مصممة حول الناس، تركز على التجربة الحقيقية ورفاهية الإنسان.", about_card2_title: "يمكن الوصول إليها", about_card2_desc: "حلول بسيطة وبديهية وسهلة الوصول لتمكين المستخدمين دون حواجز.", about_card3_title: "قابلة للتطوير", about_card3_desc: "منتجات مصممة للنمو بقوة من ألمانيا إلى أوروبا والعالم.", products_title: "منتجاتنا", prod1_title: "الشمول المالي والكرامة", prod1_desc: "حل دفع رقمي مصمم لمساعدة الأشخاص في المواقف الضعيفة على الوصول إلى الخدمات الأساسية بأمان.", prod2_title: "ربط الدائنين والمدينين", prod2_desc: "منصة رقمية مصممة لتسهيل التواصل بين الدائنين والمدينين بشكل آمن وشفاف.", prod3_title: "إنشاء رقمي أبسط", prod3_desc: "أدوات رقمية وسير عمل ذكاء اصطناعي لمساعدة المبدعين والشركات الصغيرة على البناء.", dortmund_title: "تأسست في دورتموند. للعالم.", dortmund_desc: "دورتموند هي المكان الذي تبدأ منه سولفيورا. مدينة دولية تعكس التنوع.", tech1: "الذكاء الاصطناعي", tech2: "بنية تحتية آمنة", tech3: "تقنية سحابية قابلة للتطوير", invest_title: "بناء المستقبل", invest_desc: "تقوم سولفيورا بتطوير مجموعة متنامية من المنتجات الرقمية مع طموحات للتوسع في جميع أنحاء أوروبا.", invest_btn: "غرفة الاستثمار →", legal_title: "إشعار قانوني / Impressum", legal_contact: "الاتصال: info@solviora.eu" }
         };
 
-        function changeLang(lang) {
+        window.changeLang = function(lang) {
             document.getElementById('currentLang').textContent = lang;
             document.getElementById('langPopup').classList.remove('show');
+            document.getElementById('langToggleBtn').setAttribute('aria-expanded', 'false');
             
-            // RTL (Right-to-Left) para Árabe
             document.body.style.direction = (lang === 'AR') ? "rtl" : "ltr";
 
             const t = translations[lang];
             if (!t) return;
             
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (t[key]) el.textContent = t[key];
-            });
-
-            document.querySelectorAll('[data-i18n-html]').forEach(el => {
-                const key = el.getAttribute('data-i18n-html');
-                if (t[key]) el.innerHTML = t[key];
-            });
-        }
+            document.querySelectorAll('[data-i18n]').forEach(el => el.textContent = t[el.getAttribute('data-i18n')] || el.textContent);
+            document.querySelectorAll('[data-i18n-html]').forEach(el => el.innerHTML = t[el.getAttribute('data-i18n-html')] || el.innerHTML);
+        };
     </script>
 </body>
 </html>
