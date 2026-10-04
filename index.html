@@ -70,13 +70,18 @@
             align-items: center;
             gap: 20px;
         }
-        .lang-switch {
-            font-size: 0.8rem;
+        .lang-switch button {
+            background: none;
+            border: none;
             color: var(--text-muted);
+            font-size: 0.85rem;
+            cursor: pointer;
+            padding: 2px 5px;
+            font-weight: 600;
         }
-        .lang-switch span {
+        .lang-switch button.active {
             color: var(--accent-gold);
-            font-weight: bold;
+            border-bottom: 1px solid var(--accent-gold);
         }
         .container {
             max-width: 1100px;
@@ -124,6 +129,8 @@
             font-size: 1rem;
             transition: background 0.2s;
             margin: 5px;
+            border: none;
+            cursor: pointer;
         }
         .btn:hover {
             background: var(--accent-gold-hover);
@@ -302,6 +309,25 @@
             font-size: 0.9rem;
             margin-bottom: 10px;
         }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: var(--card-bg);
+            border: 1px solid var(--accent-gold);
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 450px;
+            text-align: center;
+        }
+        .modal-content h3 { color: var(--accent-gold); margin-bottom: 15px; }
+        .modal-content p { color: var(--text-muted); margin-bottom: 20px; }
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.4rem; }
             .portfolio-model { grid-template-columns: 1fr; }
@@ -316,19 +342,24 @@
     <header>
         <div class="logo-area">
             <div class="logo">SOLVIORA</div>
-            <div class="tagline-header">Technology for Humans</div>
+            <div class="tagline-header" data-i18n="tagline">Technology for Humans</div>
         </div>
         <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#products">Products</a></li>
-            <li><a href="#technology">Technology</a></li>
-            <li><a href="#impact">Impact</a></li>
-            <li><a href="#investors">Investors</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about" data-i18n="nav_about">About</a></li>
+            <li><a href="#products" data-i18n="nav_products">Products</a></li>
+            <li><a href="#technology" data-i18n="nav_tech">Technology</a></li>
+            <li><a href="#impact" data-i18n="nav_impact">Impact</a></li>
+            <li><a href="#investors" data-i18n="nav_investors">Investors</a></li>
+            <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
         </ul>
         <div class="header-right">
-            <div class="lang-switch"><span>DE</span> | EN | TR | PT</div>
-            <a href="#products" class="btn" style="padding: 8px 16px; font-size: 0.85rem; margin:0;">Explore Products</a>
+            <div class="lang-switch">
+                <button onclick="setLanguage('de')" id="btn-de" class="active">DE</button> | 
+                <button onclick="setLanguage('en')" id="btn-en">EN</button> | 
+                <button onclick="setLanguage('tr')" id="btn-tr">TR</button> | 
+                <button onclick="setLanguage('pt')" id="btn-pt">PT</button>
+            </div>
+            <a href="#products" class="btn" style="padding: 8px 16px; font-size: 0.85rem; margin:0;" data-i18n="explore_btn">Explore Products</a>
         </div>
     </header>
 
@@ -336,36 +367,36 @@
 
         <!-- 2. HERO -->
         <section class="hero" style="border-top: none;">
-            <div class="hero-badge">Born in Dortmund. Built for Humans.</div>
-            <h1>Technology for <span>Humans</span></h1>
-            <p>We build digital products that solve real human problems — making technology more accessible, useful and meaningful.</p>
+            <div class="hero-badge" data-i18n="hero_badge">Born in Dortmund. Built for Humans.</div>
+            <h1 data-i18n-html="hero_title">Technology for <span>Humans</span></h1>
+            <p data-i18n="hero_desc">We build digital products that solve real human problems — making technology more accessible, useful and meaningful.</p>
             <div>
-                <a href="#products" class="btn">Explore Our Products</a>
-                <a href="#about" class="btn btn-outline">Discover Solviora</a>
+                <a href="#products" class="btn" data-i18n="explore_products">Explore Our Products</a>
+                <a href="#about" class="btn btn-outline" data-i18n="discover_solviora">Discover Solviora</a>
             </div>
         </section>
 
-        <!-- 3. A IDEIA DA SOLVIORA -->
+        <!-- 3. ABOUT -->
         <section id="about">
             <div class="section-title">
-                <h2>One company. Multiple products. One purpose.</h2>
-                <p>Solviora is a technology company developing digital products for people, communities and businesses.</p>
+                <h2 data-i18n="about_title">One company. Multiple products. One purpose.</h2>
+                <p data-i18n="about_subtitle">Solviora is a technology company developing digital products for people, communities and businesses.</p>
             </div>
-            <p style="text-align: center; color: var(--text-muted); max-width: 800px; margin: 0 auto 40px auto; font-size: 1.1rem;">
+            <p style="text-align: center; color: var(--text-muted); max-width: 800px; margin: 0 auto 40px auto; font-size: 1.1rem;" data-i18n="about_desc">
                 From financial inclusion and debt resolution to AI-powered digital tools, we create technology designed around real human needs.
             </p>
             <div class="grid-3">
                 <div class="card">
-                    <h3>Human-Centered</h3>
-                    <p>Tecnologia pensada para pessoas, centrada na experiência real e no bem-estar humano.</p>
+                    <h3 data-i18n="card1_title">Human-Centered</h3>
+                    <p data-i18n="card1_desc">Technology designed around people, focused on real experience and human well-being.</p>
                 </div>
                 <div class="card">
-                    <h3>Accessible</h3>
-                    <p>Soluções simples, intuitivas e acessíveis para capacitar utilizadores sem barreiras.</p>
+                    <h3 data-i18n="card2_title">Accessible</h3>
+                    <p data-i18n="card2_desc">Simple, intuitive and accessible solutions to empower users without barriers.</p>
                 </div>
                 <div class="card">
-                    <h3>Scalable</h3>
-                    <p>Produtos concebidos para crescer com robustez da Alemanha para a Europa e para o mundo.</p>
+                    <h3 data-i18n="card3_title">Scalable</h3>
+                    <p data-i18n="card3_desc">Products built to grow robustly from Germany to Europe and the world.</p>
                 </div>
             </div>
         </section>
@@ -373,54 +404,46 @@
         <!-- 4. PRODUCTS -->
         <section id="products">
             <div class="section-title">
-                <h2>Our Products</h2>
-                <p>A growing ecosystem of purposeful digital solutions.</p>
+                <h2 data-i18n="prod_main_title">Our Products</h2>
+                <p data-i18n="prod_main_sub">A growing ecosystem of purposeful digital solutions.</p>
             </div>
             <div class="grid-3">
                 <div class="card">
                     <div>
                         <div class="card-num">01 — DignityPay</div>
-                        <h3>Financial Inclusion & Human Dignity</h3>
-                        <p>A digital payment and financial inclusion solution designed to help people in vulnerable situations access essential services and participate more easily in the digital economy.</p>
+                        <h3 data-i18n="p1_title">Financial Inclusion & Human Dignity</h3>
+                        <p data-i18n="p1_desc">A digital payment and financial inclusion solution designed to help people in vulnerable situations access essential services and participate more easily in the digital economy.</p>
                     </div>
-                    <a href="#contact" class="btn btn-outline" style="text-align: center; margin-top: 20px;">Discover DignityPay →</a>
+                    <button class="btn btn-outline" style="width:100%; text-align: center; margin-top: 20px;" onclick="openModal('DignityPay')">Discover DignityPay →</button>
                 </div>
                 <div class="card">
                     <div>
                         <div class="card-num">02 — Debt Resolution</div>
-                        <h3>Connecting Creditors & Debtors</h3>
-                        <p>A digital platform designed to facilitate communication between creditors and debtors and help create possible paths toward resolving outstanding debts. (Note: Solviora does not provide legal or financial advisory services).</p>
+                        <h3 data-i18n="p2_title">Connecting Creditors & Debtors</h3>
+                        <p data-i18n="p2_desc">A digital platform designed to facilitate communication between creditors and debtors and help create possible paths toward resolving outstanding debts. (Note: Solviora does not provide legal or financial advisory services).</p>
                     </div>
-                    <a href="#contact" class="btn btn-outline" style="text-align: center; margin-top: 20px;">Discover Debt Resolution →</a>
+                    <button class="btn btn-outline" style="width:100%; text-align: center; margin-top: 20px;" onclick="openModal('Debt Resolution')">Discover Debt Resolution →</button>
                 </div>
                 <div class="card">
                     <div>
-                        <div class="card-num">03 — App das Vírgulas</div>
-                        <h3>A Solviora Digital Product</h3>
-                        <p>A digital product developed to solve a specific real-world problem through a simple and accessible technology experience.</p>
+                        <div class="card-num">03 — Solviora Studio</div>
+                        <h3 data-i18n="p3_title">Digital Creation Made Simpler</h3>
+                        <p data-i18n="p3_desc">Digital tools and AI workflows designed to help individuals, creators and small businesses build websites, manage their digital presence and scale effectively.</p>
                     </div>
-                    <a href="#contact" class="btn btn-outline" style="text-align: center; margin-top: 20px;">Discover the Product →</a>
-                </div>
-                <div class="card">
-                    <div>
-                        <div class="card-num">04 — AI & Digital Tools</div>
-                        <h3>Digital Creation Made Simpler</h3>
-                        <p>Tools designed to help individuals, creators and small businesses build websites, manage their digital presence and use AI more effectively.</p>
-                    </div>
-                    <a href="#contact" class="btn btn-outline" style="text-align: center; margin-top: 20px;">Explore Digital Tools →</a>
+                    <button class="btn btn-outline" style="width:100%; text-align: center; margin-top: 20px;" onclick="openModal('Solviora Studio')">Explore Solviora Studio →</button>
                 </div>
                 <div class="card" style="border-style: dashed;">
                     <div>
-                        <div class="card-num">05 — Future Products</div>
-                        <h3>More Ideas. More Solutions.</h3>
-                        <p>Solviora is building a growing ecosystem of digital products designed around real human needs and future innovations.</p>
+                        <div class="card-num">04 — Future Products</div>
+                        <h3 data-i18n="p4_title">More Ideas. More Solutions.</h3>
+                        <p data-i18n="p4_desc">Solviora is building a growing ecosystem of digital products designed around real human needs and future innovations.</p>
                     </div>
-                    <a href="#contact" class="btn btn-outline" style="text-align: center; margin-top: 20px;">What We're Building →</a>
+                    <button class="btn btn-outline" style="width:100%; text-align: center; margin-top: 20px;" onclick="openModal('Future Products')">What We're Building →</button>
                 </div>
             </div>
         </section>
 
-        <!-- 5. COMO FUNCIONA O ECOSSISTEMA -->
+        <!-- 5. ECOSYSTEM FLOW -->
         <section>
             <div class="section-title">
                 <h2>From an Idea to a Product</h2>
@@ -462,24 +485,20 @@
             <div class="grid-3">
                 <div class="card" style="text-align: center;">
                     <h3 style="color: var(--accent-gold);">Inclusion</h3>
-                    <p>Garantir que ninguém fica para trás na transição digital.</p>
+                    <p>Ensuring no one is left behind in the digital transition.</p>
                 </div>
                 <div class="card" style="text-align: center;">
                     <h3 style="color: var(--accent-gold);">Dignity</h3>
-                    <p>Respeito absoluto pela privacidade e autonomia humana.</p>
+                    <p>Absolute respect for privacy and human autonomy.</p>
                 </div>
                 <div class="card" style="text-align: center;">
                     <h3 style="color: var(--accent-gold);">Opportunity</h3>
-                    <p>Abertura de novos caminhos e ferramentas para crescer.</p>
-                </div>
-                <div class="card" style="text-align: center; grid-column: 1 / -1; max-width: 400px; margin: 0 auto;">
-                    <h3 style="color: var(--accent-gold);">Access</h3>
-                    <p>Acesso democrático a serviços essenciais.</p>
+                    <p>Opening new pathways and tools for growth.</p>
                 </div>
             </div>
         </section>
 
-        <!-- 8. MODELO EMPRESARIAL -->
+        <!-- 8. PORTFOLIO MODEL -->
         <section>
             <div class="section-title">
                 <h2>A Growing Technology Portfolio</h2>
@@ -488,20 +507,17 @@
             <div class="portfolio-model">
                 <div class="portfolio-col">
                     <h4>Commercial Products</h4>
-                    <p style="font-size: 0.9rem;">Geração de receita sustentável e viabilidade de mercado.</p>
+                    <p style="font-size: 0.9rem;">Sustainable revenue generation and market viability.</p>
                 </div>
                 <div class="portfolio-col">
                     <h4>Technology Products</h4>
-                    <p style="font-size: 0.9rem;">Inovação digital e escalabilidade técnica contínua.</p>
+                    <p style="font-size: 0.9rem;">Continuous digital innovation and technical scalability.</p>
                 </div>
                 <div class="portfolio-col">
                     <h4>Social Impact Products</h4>
-                    <p style="font-size: 0.9rem;">Foco em resolver problemas reais da sociedade humana.</p>
+                    <p style="font-size: 0.9rem;">Focus on solving real societal human problems.</p>
                 </div>
             </div>
-            <p style="text-align: center; color: var(--text-muted); margin-top: 30px; font-size: 0.95rem;">
-                Produtos low-ticket e comerciais ajudam a financiar o crescimento e o desenvolvimento de soluções de maior impacto social.
-            </p>
         </section>
 
         <!-- 9. TECHNOLOGY -->
@@ -520,7 +536,7 @@
             </div>
         </section>
 
-        <!-- 10. MULTILINGUAL BY DESIGN -->
+        <!-- 10. MULTILINGUAL -->
         <section>
             <div class="section-title">
                 <h2>Technology That Speaks Your Language</h2>
@@ -552,11 +568,11 @@
                 <p style="color: var(--text-muted); max-width: 700px; margin: 0 auto 25px auto;">
                     Solviora is developing a growing portfolio of digital products from Dortmund, Germany, with ambitions to scale across Europe and beyond.
                 </p>
-                <a href="#contact" class="btn">Investor Room →</a>
+                <a href="mailto:info@solviora.eu" class="btn">Investor Room →</a>
             </div>
         </section>
 
-        <!-- 13. CALL TO ACTION -->
+        <!-- 13. CONTACT -->
         <section id="contact" style="text-align: center;">
             <h2 style="font-size: 2.5rem; margin-bottom: 15px;">Let's Build Technology for Humans.</h2>
             <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto 30px auto; font-size: 1.1rem;">
@@ -564,21 +580,18 @@
             </p>
             <div>
                 <a href="#products" class="btn">Explore Products</a>
-                <a href="mailto:kontakt@solviora.eu" class="btn btn-outline">Partner With Us</a>
-                <a href="mailto:kontakt@solviora.eu" class="btn btn-outline">Investor Room</a>
+                <a href="mailto:info@solviora.eu" class="btn btn-outline">Partner With Us</a>
+                <a href="mailto:info@solviora.eu" class="btn btn-outline">Investor Room</a>
             </div>
         </section>
 
-        <!-- SECÇÕES LEGAIS (IMPRESSUM & DATENSCHUTZ) -->
+        <!-- LEGAL SECTIONS (IMPRESSUM & DATENSCHUTZ) -->
         <div class="legal-section" id="impressum">
             <h3>Legal Notice / Impressum</h3>
-            <p><strong>Angaben gemäß § 5 TMG:</strong><br>
-            Solviora UG (haftungsbeschränkt) i.G.<br>
-            Dortmund, Deutschland</p>
-            <p><strong>Vertreten durch:</strong><br>
-            Miguel Gomes</p>
-            <p><strong>Kontakt:</strong><br>
-            E-Mail: kontakt@solviora.eu</p>
+            <p><strong>Angaben gemäß § 5 TMG:</strong><br>Solviora UG (haftungsbeschränkt) i.G., Dortmund, Deutschland</p>
+            <p><strong>Vertreten durch:</strong> Miguel Gomes</p>
+            <p><strong>Kontakt:</strong> E-Mail: info@solviora.eu</p>
+            <p style="margin-top: 10px; font-size: 0.85rem;"><strong>Haftungsausschluss:</strong> Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links.</p>
         </div>
 
         <div class="legal-section" id="datenschutz">
@@ -621,5 +634,107 @@
         </div>
     </footer>
 
+    <!-- MODAL INTERATIVO -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle">Solviora Ecosystem</h3>
+            <p id="modalText">Detalhes do produto. Para parcerias ou acesso antecipado, entre em contacto connosco através de info@solviora.eu</p>
+            <button class="btn" onclick="closeModal()">Fechar</button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT DE INTERATIVIDADE E TRADUÇÕES -->
+    <script>
+        const translations = {
+            de: {
+                tagline: "Technology for Humans",
+                nav_about: "Über uns",
+                nav_products: "Produkte",
+                nav_tech: "Technologie",
+                nav_impact: "Wirkung",
+                nav_investors: "Investoren",
+                nav_contact: "Kontakt",
+                explore_btn: "Produkte entdecken",
+                hero_badge: "Geboren in Dortmund. Für Menschen gemacht.",
+                hero_title: "Technologie für <span>Menschen</span>",
+                hero_desc: "Wir entwickeln digitale Produkte, die echte menschliche Probleme lösen — für eine zugänglichere, nützlichere und sinnvollere Technologie.",
+                explore_products: "Unsere Produkte",
+                discover_solviora: "Solviora entdecken"
+            },
+            en: {
+                tagline: "Technology for Humans",
+                nav_about: "About",
+                nav_products: "Products",
+                nav_tech: "Technology",
+                nav_impact: "Impact",
+                nav_investors: "Investors",
+                nav_contact: "Contact",
+                explore_btn: "Explore Products",
+                hero_badge: "Born in Dortmund. Built for Humans.",
+                hero_title: "Technology for <span>Humans</span>",
+                hero_desc: "We build digital products that solve real human problems — making technology more accessible, useful and meaningful.",
+                explore_products: "Explore Our Products",
+                discover_solviora: "Discover Solviora"
+            },
+            tr: {
+                tagline: "İnsanlar İçin Teknoloji",
+                nav_about: "Hakkımızda",
+                nav_products: "Ürünler",
+                nav_tech: "Teknoloji",
+                nav_impact: "Etki",
+                nav_investors: "Yatırımcılar",
+                nav_contact: "İletişim",
+                explore_btn: "Ürünleri İncele",
+                hero_badge: "Dortmund'da Doğdu. İnsanlar İçin Kuruldu.",
+                hero_title: "<span>İnsanlar</span> İçin Teknoloji",
+                hero_desc: "Gerçek insan problemlerini çözen dijital ürünler inşa ediyoruz — teknolojiyi daha erişilebilir, kullanışlı ve anlamlı kılıyoruz.",
+                explore_products: "Ürünlerimizi Keşfedin",
+                discover_solviora: "Solviora'yı Keşfedin"
+            },
+            pt: {
+                tagline: "Tecnologia para Humanos",
+                nav_about: "Sobre",
+                nav_products: "Produtos",
+                nav_tech: "Tecnologia",
+                nav_impact: "Impacto",
+                nav_investors: "Investidores",
+                nav_contact: "Contacto",
+                explore_btn: "Explorar Produtos",
+                hero_badge: "Nascido em Dortmund. Construído para Humanos.",
+                hero_title: "Tecnologia para <span>Humanos</span>",
+                hero_desc: "Construímos produtos digitais que resolvem problemas humanos reais — tornando a tecnologia mais acessível, útil e significativa.",
+                explore_products: "Explorar os Nossos Produtos",
+                discover_solviora: "Descobrir a Solviora"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + lang).classList.add('active');
+
+            const t = translations[lang];
+            if (!t) return;
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key]) el.textContent = t[key];
+            });
+
+            document.querySelectorAll('[data-i18n-html]').forEach(el => {
+                const key = el.getAttribute('data-i18n-html');
+                if (t[key]) el.innerHTML = t[key];
+            });
+        }
+
+        function openModal(productName) {
+            document.getElementById('modalTitle').textContent = productName;
+            document.getElementById('modalText').textContent = "Produto estratégico do ecossistema Solviora. Para mais detalhes, integração ou acesso antecipado, envie um email para info@solviora.eu";
+            document.getElementById('infoModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('infoModal').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
