@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Solviora – Anonyme Schuldenvermittlung aus Dortmund. Diskret, fair, DSGVO-konform.">
-    <title>Solviora – Anonyme Schuldenvermittlung</title>
+    <title>Solviora | Anonyme Schuldenvermittlung</title>
     <style>
         :root {
-            --bg-color: #0d1117;
-            --card-bg: #161b22;
-            --text-main: #f0f6fc;
-            --text-muted: #8b949e;
-            --accent-gold: #e3b341;
-            --border-color: #30363d;
+            --bg-dark: #090d12;
+            --card-bg: #11161d;
+            --border-color: #212833;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent-gold: #e5b842;
+            --accent-gold-hover: #f1c40f;
+            --accent-glow: rgba(229, 184, 66, 0.15);
         }
         * {
             box-sizing: border-box;
@@ -21,134 +23,334 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
         body {
-            background-color: var(--bg-color);
+            background-color: var(--bg-dark);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 20px;
+            scroll-behavior: smooth;
         }
-        .container {
-            max-width: 800px;
-            margin: 40px auto;
+        header {
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--text-main);
+            letter-spacing: 0.5px;
+        }
+        .logo span {
+            color: var(--accent-gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+        .badge-top {
+            background: var(--accent-glow);
+            color: var(--accent-gold);
+            border: 1px solid rgba(229, 184, 66, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .hero {
+            max-width: 1000px;
+            margin: 60px auto 40px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        .hero h1 span {
+            color: var(--accent-gold);
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+        .grid {
+            max-width: 1000px;
+            margin: 0 auto 60px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            padding: 30px;
+            transition: border-color 0.2s;
         }
-        header {
-            text-align: center;
-            margin-bottom: 40px;
+        .card:hover {
+            border-color: var(--accent-gold);
         }
-        .badge {
-            display: inline-block;
-            background: rgba(227, 179, 65, 0.15);
+        .card h3 {
             color: var(--accent-gold);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            border: 1px solid rgba(227, 179, 65, 0.3);
-        }
-        h1 {
-            font-size: 2.2rem;
-            color: var(--text-main);
-            margin-bottom: 10px;
-        }
-        h1 span {
-            color: var(--accent-gold);
-        }
-        p.subtitle {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-        }
-        .section {
-            margin-bottom: 30px;
-            border-top: 1px solid var(--border-color);
-            padding-top: 25px;
-        }
-        h2 {
-            font-size: 1.3rem;
-            color: var(--accent-gold);
+            font-size: 1.2rem;
             margin-bottom: 12px;
         }
-        ul {
-            list-style: none;
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
         }
-        ul li {
-            margin-bottom: 10px;
-            padding-left: 20px;
-            position: relative;
+        .section-box {
+            max-width: 1000px;
+            margin: 0 auto 60px auto;
+            padding: 40px 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+        }
+        .section-box h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
             color: var(--text-main);
         }
-        ul li::before {
-            content: "•";
+        .features-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .features-list li {
+            position: relative;
+            padding-left: 24px;
+            color: var(--text-muted);
+        }
+        .features-list li::before {
+            content: "✓";
             color: var(--accent-gold);
             position: absolute;
             left: 0;
             font-weight: bold;
         }
-        .cta-box {
+        .legal-section {
+            max-width: 1000px;
+            margin: 0 auto 60px auto;
+            padding: 40px 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+        }
+        .legal-section h2 {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+        .legal-section h3 {
+            font-size: 1.1rem;
+            margin: 20px 0 8px 0;
+            color: var(--text-main);
+        }
+        .legal-section p, .legal-section ul {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        .legal-section ul {
+            padding-left: 20px;
+        }
+        .cta-section {
             text-align: center;
-            margin-top: 40px;
-            padding: 25px;
-            background: rgba(22, 27, 34, 0.8);
-            border-radius: 8px;
-            border: 1px solid var(--accent-gold);
+            padding: 60px 20px;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--card-bg) 100%);
+            border-top: 1px solid var(--border-color);
         }
         .btn {
             display: inline-block;
             background: var(--accent-gold);
             color: #000;
-            padding: 12px 28px;
-            border-radius: 6px;
+            padding: 14px 32px;
+            border-radius: 8px;
             font-weight: bold;
             text-decoration: none;
-            margin-top: 15px;
-            transition: opacity 0.2s;
+            font-size: 1rem;
+            transition: background 0.2s;
+            margin-top: 20px;
         }
         .btn:hover {
-            opacity: 0.9;
+            background: var(--accent-gold-hover);
         }
         footer {
             text-align: center;
-            margin-top: 40px;
-            font-size: 0.85rem;
+            padding: 30px;
+            border-top: 1px solid var(--border-color);
             color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        footer a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .features-list { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="badge">MVP • Dortmund & Frankfurt</div>
-            <h1>Solviora | <span>Schuldenvermittlung</span></h1>
-            <p class="subtitle">Anonyme Schuldenvermittlung aus Dortmund. Diskret, fair und DSGVO-konform.</p>
-        </header>
 
-        <div class="section">
-            <h2>Über das Projekt</h2>
-            <p>Solviora vermittelt diskret zwischen Schuldnern und Gläubigern. Unsere Plattform bietet sicheres, strukturiertes B2B-Onboarding, transparente Erfolgsgebühren und modernste Zahlungsabwicklung – entwickelt für den deutschen Markt mit Schwerpunkt in Frankfurt und Dortmund.</p>
+    <header>
+        <div class="logo">Solviora | <span>Schuldenvermittlung</span></div>
+        <ul class="nav-links">
+            <li><a href="#features">Leistungen</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+            <li><a href="#impressum">Impressum</a></li>
+            <li><a href="#datenschutz">Datenschutz</a></li>
+        </ul>
+        <div class="badge-top">Dortmund & Frankfurt</div>
+    </header>
+
+    <section class="hero">
+        <h1>Schulden diskret <br><span>und fair lösen</span></h1>
+        <p>Anonyme, sichere und DSGVO-konforme Schuldenvermittlung aus Dortmund. Wir verbinden Schuldner und Gläubiger transparent, effizient und professionell.</p>
+        <a href="#kontakt" class="btn">Fall einreichen / Kontakt</a>
+    </section>
+
+    <div class="grid" id="features">
+        <div class="card">
+            <h3>🔒 Anonym & Sicher</h3>
+            <p>Höchste Datenschutzstandards nach DSGVO. Ihre Identität und sensiblen Finanzdaten bleiben strikt geschützt und vertraulich.</p>
         </div>
-
-        <div class="section">
-            <h2>Kernmerkmale</h2>
-            <ul>
-                <li>Anonyme und geschützte Fallbearbeitung nach höchsten Datenschutzstandards (DSGVO).</li>
-                <li>Transparente Struktur ohne versteckte Kosten und mit klaren Erfolgsmodellen.</li>
-                <li>Strategische Partnerschaften und skalierbare Finanzierungslösungen.</li>
-            </ul>
+        <div class="card">
+            <h3>⚖️ Fair & Transparent</h3>
+            <p>Klare Erfolgsgebühren ohne versteckte Kosten. Wir vermitteln lösungsorientiert zwischen allen Parteien.</p>
         </div>
-
-        <div class="cta-box">
-            <h2>Kontakt & Investorenanfragen</h2>
-            <p>Möchten Sie mehr über unser Konzept erfahren oder Partnerschaften besprechen?</p>
-            <a href="mailto:kontakt@solviora.eu" class="btn">Kontakt aufnehmen</a>
+        <div class="card">
+            <h3>🚀 Moderne Infrastruktur</h3>
+            <p>Digitales B2B-Onboarding, sichere Zahlungsabwicklung und optimierte Prozesse für den deutschen Markt.</p>
         </div>
-
-        <footer>
-            &copy; 2026 Solviora. Alle Rechte vorbehalten. Hosted via GitHub Pages.
-        </footer>
     </div>
-</body>
-</html>
+
+    <div class="section-box">
+        <h2>Unsere Kernkompetenzen</h2>
+        <ul class="features-list">
+            <li>Strukturierte Gläubiger-Vermittlung</li>
+            <li>DSGVO-konformes digitales Onboarding</li>
+            <li>Transparente Fallbearbeitung</li>
+            <li>Fokus auf Dortmund, Frankfurt & bundesweit</li>
+            <li>Sichere Zahlungsabwicklung (Stripe & Crypto)</li>
+            <li>Professionelle B2B-Partnerschaften</li>
+        </ul>
+    </div>
+
+    <div class="cta-section" id="kontakt">
+        <h2 style="margin-bottom: 10px;">Bereit für den nächsten Schritt?</h2>
+        <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">Treten Sie mit unserem Team in einem sicheren Rahmen in Kontakt, um Partnerschaften oder spezifische Falllösungen zu besprechen.</p>
+        <a href="mailto:kontakt@solviora.eu" class="btn">kontakt@solviora.eu</a>
+    </div>
+
+    <!-- SEÇÃO LEGAL: IMPRESSUM -->
+    <div class="legal-section" id="impressum">
+        <h2>Impressum</h2>
+        <h3>Angaben gemäß § 5 TMG</h3>
+        <p><strong>Solviora UG (haftungsbeschränkt) i.G.</strong><br>
+        Dortmund, Deutschland</p>
+        
+        <h3>Kontakt</h3>
+        <p>E-Mail: kontakt@solviora.eu</p>
+        
+        <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3>
+        <p>Miguel Gomes<br>Dortmund</p>
+    </div>
+
+    <!-- SEÇÃO LEGAL: DATENSCHUTZ -->
+    <div class="legal-section" id="datenschutz">
+        <h2>Datenschutzerklärung</h2>
+        <h3>1. Datenschutz auf einen Blick</h3>
+        <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenenTens toda a razão, e fazes perfeitamente em alertar para isso. Em projetos deste tipo, especialmente em solo alemão (com foco em Dortmund e Frankfurt), a vertente legal e de conformidade (como o *Impressum*, a política de privacidade / *Datenschutzerklärung*, e os avisos legais obrigatórios) é absolutamente crucial para nos protegermos contra avisos de infração (*Abmahnungen*) ou multas pesadas. 
+
+Para garantirmos que o teu MVP fica blindado a nível legal, profissional e com todas as secções informativas necessárias, adicionei ao código todas as cláusulas legais essenciais, o *Impressum*, a proteção de dados (DSGVO), bem como as secções completas de B2B e as vias de contacto para investidores e clientes.
+
+Aqui tens o código HTML rico, completo e protegido a nível legal para colares no teu `index.html`:
+
+```html
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Solviora – Anonyme Schuldenvermittlung aus Dortmund. Diskret, fair, DSGVO-konform.">
+    <title>Solviora | Anonyme Schuldenvermittlung</title>
+    <style>
+        :root {
+            --bg-dark: #090d12;
+            --card-bg: #11161d;
+            --border-color: #212833;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent-gold: #e5b842;
+            --accent-gold-hover: #f1c40f;
+            --accent-glow: rgba(229, 184, 66, 0.15);
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+        header {
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+        .logo span {
+            color: var(--accent-gold);
+        }
+        .badge-top {
+            background: var(--accent-glow);
+            color: var(--accent-gold);
+            border: 1px solid rgba(229, 184, 66, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .container {
+            max-width
