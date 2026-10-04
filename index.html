@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Solviora – Anonyme Schuldenvermittlung aus Dortmund. Diskret, fair, DSGVO-konform.">
-    <title>Solviora | Anonyme Schuldenvermittlung</title>
+    <meta name="description" content="Solviora — Technology for Humans. Building a growing ecosystem of human-centered digital products from Dortmund.">
+    <title>Solviora | Technology for Humans</title>
     <style>
         :root {
             --bg-dark: #090d12;
@@ -39,14 +39,17 @@
             top: 0;
             z-index: 100;
         }
-        .logo {
+        .logo-area .logo {
             font-size: 1.25rem;
             font-weight: bold;
             color: var(--text-main);
             letter-spacing: 0.5px;
         }
-        .logo span {
+        .logo-area .tagline-header {
+            font-size: 0.75rem;
             color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .nav-links {
             display: flex;
@@ -62,489 +65,560 @@
         .nav-links a:hover {
             color: var(--accent-gold);
         }
-        .badge-top {
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .lang-switch {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .lang-switch span {
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .hero {
+            padding: 80px 0 60px 0;
+            text-align: center;
+        }
+        .hero-badge {
+            display: inline-block;
             background: var(--accent-glow);
             color: var(--accent-gold);
             border: 1px solid rgba(229, 184, 66, 0.3);
-            padding: 4px 12px;
+            padding: 6px 16px;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 600;
-        }
-        .hero {
-            max-width: 1000px;
-            margin: 60px auto 40px auto;
-            padding: 0 20px;
-            text-align: center;
+            margin-bottom: 20px;
         }
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 20px;
             font-weight: 800;
-            letter-spacing: -0.5px;
+            letter-spacing: -1px;
         }
         .hero h1 span {
             color: var(--accent-gold);
         }
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: var(--text-muted);
-            max-width: 700px;
+            max-width: 750px;
             margin: 0 auto 30px auto;
         }
-        .grid {
-            max-width: 1000px;
-            margin: 0 auto 60px auto;
-            padding: 0 20px;
+        .btn {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: #000;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background 0.2s;
+            margin: 5px;
+        }
+        .btn:hover {
+            background: var(--accent-gold-hover);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+        .btn-outline:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+        section {
+            padding: 60px 0;
+            border-top: 1px solid var(--border-color);
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 24px;
         }
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 30px;
+            padding: 35px;
             transition: border-color 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .card:hover {
             border-color: var(--accent-gold);
         }
         .card h3 {
             color: var(--accent-gold);
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 12px;
         }
         .card p {
             color: var(--text-muted);
             font-size: 0.95rem;
-        }
-        .section-box {
-            max-width: 1000px;
-            margin: 0 auto 60px auto;
-            padding: 40px 20px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-        }
-        .section-box h2 {
-            font-size: 1.8rem;
             margin-bottom: 20px;
-            color: var(--text-main);
         }
-        .features-list {
-            list-style: none;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-        .features-list li {
-            position: relative;
-            padding-left: 24px;
-            color: var(--text-muted);
-        }
-        .features-list li::before {
-            content: "✓";
-            color: var(--accent-gold);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-        .legal-section {
-            max-width: 1000px;
-            margin: 0 auto 60px auto;
-            padding: 40px 20px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-        }
-        .legal-section h2 {
-            color: var(--accent-gold);
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 8px;
-        }
-        .legal-section h3 {
-            font-size: 1.1rem;
-            margin: 20px 0 8px 0;
-            color: var(--text-main);
-        }
-        .legal-section p, .legal-section ul {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-        .legal-section ul {
-            padding-left: 20px;
-        }
-        .cta-section {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--card-bg) 100%);
-            border-top: 1px solid var(--border-color);
-        }
-        .btn {
-            display: inline-block;
-            background: var(--accent-gold);
-            color: #000;
-            padding: 14px 32px;
-            border-radius: 8px;
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: background 0.2s;
-            margin-top: 20px;
-        }
-        .btn:hover {
-            background: var(--accent-gold-hover);
-        }
-        footer {
-            text-align: center;
-            padding: 30px;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-muted);
+        .card-num {
             font-size: 0.85rem;
-        }
-        footer a {
             color: var(--accent-gold);
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .features-list { grid-template-columns: 1fr; }
-            .nav-links { display: none; }
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="logo">Solviora | <span>Schuldenvermittlung</span></div>
-        <ul class="nav-links">
-            <li><a href="#features">Leistungen</a></li>
-            <li><a href="#kontakt">Kontakt</a></li>
-            <li><a href="#impressum">Impressum</a></li>
-            <li><a href="#datenschutz">Datenschutz</a></li>
-        </ul>
-        <div class="badge-top">Dortmund & Frankfurt</div>
-    </header>
-
-    <section class="hero">
-        <h1>Schulden diskret <br><span>und fair lösen</span></h1>
-        <p>Anonyme, sichere und DSGVO-konforme Schuldenvermittlung aus Dortmund. Wir verbinden Schuldner und Gläubiger transparent, effizient und professionell.</p>
-        <a href="#kontakt" class="btn">Fall einreichen / Kontakt</a>
-    </section>
-
-    <div class="grid" id="features">
-        <div class="card">
-            <h3>🔒 Anonym & Sicher</h3>
-            <p>Höchste Datenschutzstandards nach DSGVO. Ihre Identität und sensiblen Finanzdaten bleiben strikt geschützt und vertraulich.</p>
-        </div>
-        <div class="card">
-            <h3>⚖️ Fair & Transparent</h3>
-            <p>Klare Erfolgsgebühren ohne versteckte Kosten. Wir vermitteln lösungsorientiert zwischen allen Parteien.</p>
-        </div>
-        <div class="card">
-            <h3>🚀 Moderne Infrastruktur</h3>
-            <p>Digitales B2B-Onboarding, sichere Zahlungsabwicklung und optimierte Prozesse für den deutschen Markt.</p>
-        </div>
-    </div>
-
-    <div class="section-box">
-        <h2>Unsere Kernkompetenzen</h2>
-        <ul class="features-list">
-            <li>Strukturierte Gläubiger-Vermittlung</li>
-            <li>DSGVO-konformes digitales Onboarding</li>
-            <li>Transparente Fallbearbeitung</li>
-            <li>Fokus auf Dortmund, Frankfurt & bundesweit</li>
-            <li>Sichere Zahlungsabwicklung (Stripe & Crypto)</li>
-            <li>Professionelle B2B-Partnerschaften</li>
-        </ul>
-    </div>
-
-    <div class="cta-section" id="kontakt">
-        <h2 style="margin-bottom: 10px;">Bereit für den nächsten Schritt?</h2>
-        <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">Treten Sie mit unserem Team in einem sicheren Rahmen in Kontakt, um Partnerschaften oder spezifische Falllösungen zu besprechen.</p>
-        <a href="mailto:kontakt@solviora.eu" class="btn">kontakt@solviora.eu</a>
-    </div>
-
-    <!-- SEÇÃO LEGAL: IMPRESSUM -->
-    <div class="legal-section" id="impressum">
-        <h2>Impressum</h2>
-        <h3>Angaben gemäß § 5 TMG</h3>
-        <p><strong>Solviora UG (haftungsbeschränkt) i.G.</strong><br>
-        Dortmund, Deutschland</p>
-        
-        <h3>Kontakt</h3>
-        <p>E-Mail: kontakt@solviora.eu</p>
-        
-        <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3>
-        <p>Miguel Gomes<br>Dortmund</p>
-    </div>
-
-    <!-- SEÇÃO LEGAL: DATENSCHUTZ -->
-    <div class="legal-section" id="datenschutz">
-        <h2>Datenschutzerklärung</h2>
-        <h3>1. Datenschutz auf einen Blick</h3>
-        <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenenTens toda a razão, e fazes perfeitamente em alertar para isso. Em projetos deste tipo, especialmente em solo alemão (com foco em Dortmund e Frankfurt), a vertente legal e de conformidade (como o *Impressum*, a política de privacidade / *Datenschutzerklärung*, e os avisos legais obrigatórios) é absolutamente crucial para nos protegermos contra avisos de infração (*Abmahnungen*) ou multas pesadas. 
-
-Para garantirmos que o teu MVP fica blindado a nível legal, profissional e com todas as secções informativas necessárias, adicionei ao código todas as cláusulas legais essenciais, o *Impressum*, a proteção de dados (DSGVO), bem como as secções completas de B2B e as vias de contacto para investidores e clientes.
-
-Aqui tens o código HTML rico, completo e protegido a nível legal para colares no teu `index.html`:
-
-```html
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Solviora – Anonyme Schuldenvermittlung aus Dortmund. Diskret, fair, DSGVO-konform.">
-    <title>Solviora | Anonyme Schuldenvermittlung</title>
-    <style>
-        :root {
-            --bg-dark: #090d12;
-            --card-bg: #11161d;
-            --border-color: #212833;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --accent-gold: #e5b842;
-            --accent-gold-hover: #f1c40f;
-            --accent-glow: rgba(229, 184, 66, 0.15);
-        }
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
-        }
-        header {
-            background: var(--card-bg);
-            border-bottom: 1px solid var(--border-color);
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .logo {
-            font-size: 1.25rem;
             font-weight: bold;
-            color: var(--text-main);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        .logo span {
-            color: var(--accent-gold);
-        }
-        .badge-top {
-            background: var(--accent-glow);
-            color: var(--accent-gold);
-            border: 1px solid rgba(229, 184, 66, 0.3);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .hero {
-            padding: 60px 0 40px 0;
-            text-align: center;
-        }
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            font-weight: 800;
-        }
-        .hero h1 span {
-            color: var(--accent-gold);
-        }
-        .hero p {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto 30px auto;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            margin-bottom: 60px;
-        }
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 30px;
-        }
-        .card h3 {
-            color: var(--accent-gold);
-            font-size: 1.2rem;
-            margin-bottom: 12px;
-        }
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-        .section-box {
+        .ecosystem-flow {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 40px;
-            margin-bottom: 40px;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
         }
-        .section-box h2 {
-            font-size: 1.6rem;
-            margin-bottom: 20px;
+        .flow-step {
+            padding: 15px 0;
             color: var(--text-main);
+            font-weight: 600;
         }
-        .section-box p {
-            color: var(--text-muted);
-            margin-bottom: 15px;
-        }
-        .features-list {
-            list-style: none;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .features-list li {
-            position: relative;
-            padding-left: 24px;
-            color: var(--text-muted);
-        }
-        .features-list li::before {
-            content: "✓";
+        .flow-arrow {
             color: var(--accent-gold);
-            position: absolute;
-            left: 0;
+            font-size: 1.2rem;
+        }
+        .dortmund-box {
+            background: linear-gradient(135deg, var(--card-bg) 0%, #161f2c 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 50px;
+            text-align: center;
+        }
+        .dortmund-path {
+            font-size: 1.2rem;
+            color: var(--accent-gold);
             font-weight: bold;
+            margin: 25px 0;
+            letter-spacing: 1px;
         }
-        .legal-box {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            background: rgba(0,0,0,0.2);
-            padding: 25px;
-            border-radius: 8px;
-            border-left: 3px solid var(--accent-gold);
-            margin-bottom: 40px;
+        .portfolio-model {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            text-align: center;
         }
-        .legal-box h3 {
-            color: var(--text-main);
+        .portfolio-col {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 12px;
+        }
+        .portfolio-col h4 {
+            color: var(--accent-gold);
             margin-bottom: 10px;
         }
-        .btn {
-            display: inline-block;
-            background: var(--accent-gold);
-            color: #000;
-            padding: 14px 32px;
-            border-radius: 8px;
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: background 0.2s;
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
         }
-        .btn:hover {
-            background: var(--accent-gold-hover);
+        .tech-tag {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 15px 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+        .investor-card {
+            background: var(--card-bg);
+            border: 1px solid var(--accent-gold);
+            border-radius: 16px;
+            padding: 50px;
+            text-align: center;
         }
         footer {
-            text-align: center;
-            padding: 40px 20px;
+            background: var(--card-bg);
             border-top: 1px solid var(--border-color);
+            padding: 60px 0 30px 0;
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
-        footer a {
-            color: var(--accent-gold);
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .footer-links a {
+            color: var(--text-muted);
             text-decoration: none;
-            margin: 0 10px;
+        }
+        .footer-links a:hover {
+            color: var(--accent-gold);
+        }
+        .legal-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+        .legal-section h3 {
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+        .legal-section p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
         }
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.1rem; }
-            .features-list { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.4rem; }
+            .portfolio-model { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
             header { padding: 15px 20px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- 1. HEADER -->
     <header>
-        <div class="logo">Solviora | <span>Schuldenvermittlung</span></div>
-        <div class="badge-top">Dortmund & Frankfurt</div>
+        <div class="logo-area">
+            <div class="logo">SOLVIORA</div>
+            <div class="tagline-header">Technology for Humans</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#technology">Technology</a></li>
+            <li><a href="#impact">Impact</a></li>
+            <li><a href="#investors">Investors</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="header-right">
+            <div class="lang-switch"><span>DE</span> | EN | TR | PT</div>
+            <a href="#products" class="btn" style="padding: 8px 16px; font-size: 0.85rem; margin:0;">Explore Products</a>
+        </div>
     </header>
 
     <div class="container">
-        <section class="hero">
-            <h1>Schulden diskret <br><span>und fair lösen</span></h1>
-            <p>Anonyme, sichere und DSGVO-konforme Schuldenvermittlung aus Dortmund. Wir verbinden Schuldner und Gläubiger transparent, effizient und professionell.</p>
-            <a href="mailto:kontakt@solviora.eu" class="btn">Fall einreichen / Kontakt</a>
+
+        <!-- 2. HERO -->
+        <section class="hero" style="border-top: none;">
+            <div class="hero-badge">Born in Dortmund. Built for Humans.</div>
+            <h1>Technology for <span>Humans</span></h1>
+            <p>We build digital products that solve real human problems — making technology more accessible, useful and meaningful.</p>
+            <div>
+                <a href="#products" class="btn">Explore Our Products</a>
+                <a href="#about" class="btn btn-outline">Discover Solviora</a>
+            </div>
         </section>
 
-        <div class="grid">
-            <div class="card">
-                <h3>🔒 Anonym & Sicher</h3>
-                <p>Höchste Datenschutzstandards nach DSGVO. Ihre Identität und sensiblen Finanzdaten bleiben strikt geschützt und vertraulich.</p>
+        <!-- 3. A IDEIA DA SOLVIORA -->
+        <section id="about">
+            <div class="section-title">
+                <h2>One company. Multiple products. One purpose.</h2>
+                <p>Solviora is a technology company developing digital products for people, communities and businesses.</p>
             </div>
-            <div class="card">
-                <h3>⚖️ Fair & Transparent</h3>
-                <p>Klare Erfolgsgebühren ohne versteckte Kosten. Wir vermitteln lösungsorientiert zwischen allen Parteien.</p>
+            <p style="text-align: center; color: var(--text-muted); max-width: 800px; margin: 0 auto 40px auto; font-size: 1.1rem;">
+                From financial inclusion and debt resolution to AI-powered digital tools, we create technology designed around real human needs.
+            </p>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Human-Centered</h3>
+                    <p>Tecnologia pensada para pessoas, centrada na experiência real e no bem-estar humano.</p>
+                </div>
+                <div class="card">
+                    <h3>Accessible</h3>
+                    <p>Soluções simples, intuitivas e acessíveis para capacitar utilizadores sem barreiras.</p>
+                </div>
+                <div class="card">
+                    <h3>Scalable</h3>
+                    <p>Produtos concebidos para crescer com robustez da Alemanha para a Europa e para o mundo.</p>
+                </div>
             </div>
-            <div class="card">
-                <h3>🚀 Moderne Infrastruktur</h3>
-                <p>Digitales B2B-Onboarding, sichere Zahlungsabwicklung und optimierte Prozesse für den deutschen Markt.</p>
-            </div>
-        </div>
+        </section>
 
-        <div class="section-box">
-            <h2>Unsere Kernkompetenzen & B2B-Modell</h2>
-            <p>Solviora fungiert als moderne Plattform zur diskreten Schuldenvermittlung. Unser Ansatz verbindet rechtssichere Prozesse mit digitaler Effizienz, um tragfähige Lösungen für alle beteiligten Parteien zu schaffen.</p>
-            <ul class="features-list">
-                <li>Strukturierte Gläubiger-Vermittlung</li>
-                <li>DSGVO-konformes digitales Onboarding</li>
-                <li>Transparente Fallbearbeitung</li>
-                <li>Fokus auf Dortmund, Frankfurt & bundesweit</li>
-                <li>Sichere Zahlungsabwicklung (Stripe & Crypto)</li>
-                <li>Professionelle B2B-Partnerschaften & Equity-Modelle</li>
-            </ul>
-        </div>
+        <!-- 4. PRODUCTS -->
+        <section id="products">
+            <div class="section-title">
+                <h2>Our Products</h2>
+                <p>A growing ecosystem of purposeful digital solutions.</p>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <div>
+                        <div class="card-num">01 — DignityPay</div>
+                        <h3>Financial Inclusion & Human Dignity</h3>
+                        <p>A digital payment and financial inclusion solution designed to help people in vulnerable situations access essential services and participate more easily in the digital economy.</p>
+                    </div>
+                    <a href="#contact" class="btn btn-outline" style="text-align: center; margin-top: 20px;">Discover DignityPay →</a>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="card-num">02 — Debt Resolution</div>
+                        <h3>Connecting Creditors & Debtors</h3>
+                        <p>A digital platform designed to facilitate communication between creditors and debtors and help create possible paths toward resolving outstanding debts. (Note: Solviora does not provide legal or financial advisory services).</p>
+                    </div>
+                    <a href="#contact" class="btn btn-outline" style="text-align: center; margin-top: 20px;">Discover Debt Resolution →</a>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="card-num">03 — App das Vírgulas</div>
+                        <h3>A Solviora Digital Product</h3>
+                        <p>A digital product developed to solve a specific real-world problem through a simple and accessible technology experience.</p>
+                    </div>
+                    <a href="#contact" class="btn btn-outline" style="text-align: center; margin-top: 20px;">Discover the Product →</a>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="card-num">04 — AI & Digital Tools</div>
+                        <h3>Digital Creation Made Simpler</h3>
+                        <p>Tools designed to help individuals, creators and small businesses build websites, manage their digital presence and use AI more effectively.</p>
+                    </div>
+                    <a href="#contact" class="btn btn-outline" style="text-align: center; margin-top: 20px;">Explore Digital Tools →</a>
+                </div>
+                <div class="card" style="border-style: dashed;">
+                    <div>
+                        <div class="card-num">05 — Future Products</div>
+                        <h3>More Ideas. More Solutions.</h3>
+                        <p>Solviora is building a growing ecosystem of digital products designed around real human needs and future innovations.</p>
+                    </div>
+                    <a href="#contact" class="btn btn-outline" style="text-align: center; margin-top: 20px;">What We're Building →</a>
+                </div>
+            </div>
+        </section>
 
-        <div class="legal-box" id="impressum">
-            <h3>Impressum & Rechtliche Hinweise</h3>
+        <!-- 5. COMO FUNCIONA O ECOSSISTEMA -->
+        <section>
+            <div class="section-title">
+                <h2>From an Idea to a Product</h2>
+                <p>We identify real problems, develop practical technology and turn ideas into products that serve people at scale.</p>
+            </div>
+            <div class="ecosystem-flow">
+                <div class="flow-step">Human Problem</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">Solviora Technology</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">Digital Product</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">Real-World Impact</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step" style="color: var(--accent-gold);">Scalable Solution</div>
+            </div>
+        </section>
+
+        <!-- 6. DORTMUND -->
+        <section>
+            <div class="dortmund-box">
+                <h2 style="font-size: 2.2rem; margin-bottom: 15px;">Born in Dortmund. Built for the World.</h2>
+                <p style="color: var(--text-muted); max-width: 700px; margin: 0 auto; font-size: 1.1rem;">
+                    Dortmund is where Solviora begins. A diverse, international city with people from around the world — an environment that reflects the human diversity we want our technology to serve.
+                </p>
+                <div class="dortmund-path">
+                    Dortmund → Germany → Europe → Global
+                </div>
+                <p style="color: var(--accent-gold); font-weight: 600;">Technology for Humans has no borders.</p>
+            </div>
+        </section>
+
+        <!-- 7. HUMAN IMPACT -->
+        <section id="impact">
+            <div class="section-title">
+                <h2>Technology With a Human Purpose</h2>
+                <p>Technology should not make people's lives more complicated. It should help people access opportunities, solve problems, communicate, participate and build a better future.</p>
+            </div>
+            <div class="grid-3">
+                <div class="card" style="text-align: center;">
+                    <h3 style="color: var(--accent-gold);">Inclusion</h3>
+                    <p>Garantir que ninguém fica para trás na transição digital.</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <h3 style="color: var(--accent-gold);">Dignity</h3>
+                    <p>Respeito absoluto pela privacidade e autonomia humana.</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <h3 style="color: var(--accent-gold);">Opportunity</h3>
+                    <p>Abertura de novos caminhos e ferramentas para crescer.</p>
+                </div>
+                <div class="card" style="text-align: center; grid-column: 1 / -1; max-width: 400px; margin: 0 auto;">
+                    <h3 style="color: var(--accent-gold);">Access</h3>
+                    <p>Acesso democrático a serviços essenciais.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. MODELO EMPRESARIAL -->
+        <section>
+            <div class="section-title">
+                <h2>A Growing Technology Portfolio</h2>
+                <p>Solviora develops a portfolio of digital products combining commercial opportunities with products designed to create measurable social impact.</p>
+            </div>
+            <div class="portfolio-model">
+                <div class="portfolio-col">
+                    <h4>Commercial Products</h4>
+                    <p style="font-size: 0.9rem;">Geração de receita sustentável e viabilidade de mercado.</p>
+                </div>
+                <div class="portfolio-col">
+                    <h4>Technology Products</h4>
+                    <p style="font-size: 0.9rem;">Inovação digital e escalabilidade técnica contínua.</p>
+                </div>
+                <div class="portfolio-col">
+                    <h4>Social Impact Products</h4>
+                    <p style="font-size: 0.9rem;">Foco em resolver problemas reais da sociedade humana.</p>
+                </div>
+            </div>
+            <p style="text-align: center; color: var(--text-muted); margin-top: 30px; font-size: 0.95rem;">
+                Produtos low-ticket e comerciais ajudam a financiar o crescimento e o desenvolvimento de soluções de maior impacto social.
+            </p>
+        </section>
+
+        <!-- 9. TECHNOLOGY -->
+        <section id="technology">
+            <div class="section-title">
+                <h2>Built for People. Designed to Scale.</h2>
+                <p>Modern tech stack engineered for security, speed and reliability.</p>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-tag">AI Integration</div>
+                <div class="tech-tag">Cloud Technology</div>
+                <div class="tech-tag">Progressive Web Apps</div>
+                <div class="tech-tag">Secure Digital Infrastructure</div>
+                <div class="tech-tag">Multilingual Experiences</div>
+                <div class="tech-tag">Mobile-First Design</div>
+            </div>
+        </section>
+
+        <!-- 10. MULTILINGUAL BY DESIGN -->
+        <section>
+            <div class="section-title">
+                <h2>Technology That Speaks Your Language</h2>
+                <p>Solviora is designed for a diverse world.</p>
+            </div>
+            <p style="text-align: center; font-size: 1.3rem; color: var(--accent-gold); font-weight: bold; margin-bottom: 10px;">
+                Deutsch · English · Türkçe · Português
+            </p>
+            <p style="text-align: center; color: var(--text-muted); font-size: 0.9rem;">More languages coming soon.</p>
+        </section>
+
+        <!-- 11. VISION -->
+        <section>
+            <div class="section-title">
+                <h2>Our Vision</h2>
+                <p style="max-width: 700px; margin: 0 auto; font-size: 1.2rem; color: var(--text-main);">
+                    To build a global ecosystem of human-centered digital products that make technology more accessible, useful and empowering.
+                </p>
+            </div>
+            <div style="text-align: center; font-size: 2rem; font-weight: 800; color: var(--accent-gold); margin-top: 20px;">
+                Technology should work for people.
+            </div>
+        </section>
+
+        <!-- 12. INVESTORS -->
+        <section id="investors">
+            <div class="investor-card">
+                <h2 style="font-size: 2rem; margin-bottom: 15px;">Building the Future of Human-Centered Technology</h2>
+                <p style="color: var(--text-muted); max-width: 700px; margin: 0 auto 25px auto;">
+                    Solviora is developing a growing portfolio of digital products from Dortmund, Germany, with ambitions to scale across Europe and beyond.
+                </p>
+                <a href="#contact" class="btn">Investor Room →</a>
+            </div>
+        </section>
+
+        <!-- 13. CALL TO ACTION -->
+        <section id="contact" style="text-align: center;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 15px;">Let's Build Technology for Humans.</h2>
+            <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto 30px auto; font-size: 1.1rem;">
+                Whether you are a user, organisation, partner, developer or investor, there is a place for you in the Solviora ecosystem.
+            </p>
+            <div>
+                <a href="#products" class="btn">Explore Products</a>
+                <a href="mailto:kontakt@solviora.eu" class="btn btn-outline">Partner With Us</a>
+                <a href="mailto:kontakt@solviora.eu" class="btn btn-outline">Investor Room</a>
+            </div>
+        </section>
+
+        <!-- SECÇÕES LEGAIS (IMPRESSUM & DATENSCHUTZ) -->
+        <div class="legal-section" id="impressum">
+            <h3>Legal Notice / Impressum</h3>
             <p><strong>Angaben gemäß § 5 TMG:</strong><br>
             Solviora UG (haftungsbeschränkt) i.G.<br>
             Dortmund, Deutschland</p>
             <p><strong>Vertreten durch:</strong><br>
-            Geschäftsführung / Founder: Miguel Gomes</p>
+            Miguel Gomes</p>
             <p><strong>Kontakt:</strong><br>
-            E-Mail: kontakt@solviora.eu<br>
-            Web: [https://solviora.eu](https://solviora.eu)</p>
-            <p style="margin-top: 10px; font-size: 0.85rem;"><strong>Haftungsausschluss (Disclaimer):</strong> Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+            E-Mail: kontakt@solviora.eu</p>
         </div>
 
-        <div class="legal-box" id="datenschutz">
-            <h3>Datenschutzerklärung (Kurzfassung DSGVO)</h3>
-            <p>Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir verarbeiten Ihre Daten daher ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO, BDSG). Wenn Sie per E-Mail Kontakt mit uns aufnehmen, werden Ihre angegebenen Daten zwecks Bearbeitung des Anliegens gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+        <div class="legal-section" id="datenschutz">
+            <h3>Privacy / Datenschutz</h3>
+            <p>Der Schutz Ihrer persönlichen Daten ist uns ein wichtiges Anliegen. Wir verarbeiten Daten streng nach den Vorgaben der DSGVO und schützen Ihre Privatsphäre bei allen unseren digitalen Produkten und Services.</p>
         </div>
+
     </div>
 
+    <!-- 14. FOOTER -->
     <footer>
-        <p>&copy; 2026 Solviora UG. Alle Rechte vorbehalten.</p>
-        <p style="margin-top: 10px;">
-            <a href="#impressum">Impressum</a> | 
-            <a href="#datenschutz">Datenschutz</a> | 
-            <a href="mailto:kontakt@solviora.eu">Kontakt</a>
-        </p>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div style="font-weight: bold; font-size: 1.2rem; color: var(--text-main); margin-bottom: 5px;">SOLVIORA</div>
+                    <div style="color: var(--accent-gold); font-size: 0.85rem; margin-bottom: 15px;">Technology for Humans</div>
+                    <p style="font-size: 0.85rem;">Born in Dortmund. Built for the World.</p>
+                </div>
+                <div>
+                    <ul class="footer-links" style="flex-direction: column; gap: 10px;">
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#technology">Technology</a></li>
+                        <li><a href="#impact">Impact</a></li>
+                        <li><a href="#investors">Investors</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="footer-links" style="flex-direction: column; gap: 10px;">
+                        <li><a href="#datenschutz">Privacy</a></li>
+                        <li><a href="#impressum">Terms</a></li>
+                        <li><a href="#impressum">Legal Notice / Impressum</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; border-top: 1px solid var(--border-color); padding-top: 30px; font-size: 0.85rem;">
+                <p>&copy; 2026 Solviora UG. All rights reserved. DE | EN | TR | PT</p>
+            </div>
+        </div>
     </footer>
 
 </body>
