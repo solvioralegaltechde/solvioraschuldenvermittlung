@@ -353,4 +353,199 @@ Aqui tens o código HTML rico, completo e protegido a nível legal para colares 
             font-weight: 600;
         }
         .container {
-            max-width
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .hero {
+            padding: 60px 0 40px 0;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        .hero h1 span {
+            color: var(--accent-gold);
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+        }
+        .card h3 {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .section-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+        .section-box h2 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+        .section-box p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+        .features-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .features-list li {
+            position: relative;
+            padding-left: 24px;
+            color: var(--text-muted);
+        }
+        .features-list li::before {
+            content: "✓";
+            color: var(--accent-gold);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .legal-box {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            background: rgba(0,0,0,0.2);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-gold);
+            margin-bottom: 40px;
+        }
+        .legal-box h3 {
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+        .btn {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: #000;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+        .btn:hover {
+            background: var(--accent-gold-hover);
+        }
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        footer a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.1rem; }
+            .features-list { grid-template-columns: 1fr; }
+            header { padding: 15px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Solviora | <span>Schuldenvermittlung</span></div>
+        <div class="badge-top">Dortmund & Frankfurt</div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h1>Schulden diskret <br><span>und fair lösen</span></h1>
+            <p>Anonyme, sichere und DSGVO-konforme Schuldenvermittlung aus Dortmund. Wir verbinden Schuldner und Gläubiger transparent, effizient und professionell.</p>
+            <a href="mailto:kontakt@solviora.eu" class="btn">Fall einreichen / Kontakt</a>
+        </section>
+
+        <div class="grid">
+            <div class="card">
+                <h3>🔒 Anonym & Sicher</h3>
+                <p>Höchste Datenschutzstandards nach DSGVO. Ihre Identität und sensiblen Finanzdaten bleiben strikt geschützt und vertraulich.</p>
+            </div>
+            <div class="card">
+                <h3>⚖️ Fair & Transparent</h3>
+                <p>Klare Erfolgsgebühren ohne versteckte Kosten. Wir vermitteln lösungsorientiert zwischen allen Parteien.</p>
+            </div>
+            <div class="card">
+                <h3>🚀 Moderne Infrastruktur</h3>
+                <p>Digitales B2B-Onboarding, sichere Zahlungsabwicklung und optimierte Prozesse für den deutschen Markt.</p>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <h2>Unsere Kernkompetenzen & B2B-Modell</h2>
+            <p>Solviora fungiert als moderne Plattform zur diskreten Schuldenvermittlung. Unser Ansatz verbindet rechtssichere Prozesse mit digitaler Effizienz, um tragfähige Lösungen für alle beteiligten Parteien zu schaffen.</p>
+            <ul class="features-list">
+                <li>Strukturierte Gläubiger-Vermittlung</li>
+                <li>DSGVO-konformes digitales Onboarding</li>
+                <li>Transparente Fallbearbeitung</li>
+                <li>Fokus auf Dortmund, Frankfurt & bundesweit</li>
+                <li>Sichere Zahlungsabwicklung (Stripe & Crypto)</li>
+                <li>Professionelle B2B-Partnerschaften & Equity-Modelle</li>
+            </ul>
+        </div>
+
+        <div class="legal-box" id="impressum">
+            <h3>Impressum & Rechtliche Hinweise</h3>
+            <p><strong>Angaben gemäß § 5 TMG:</strong><br>
+            Solviora UG (haftungsbeschränkt) i.G.<br>
+            Dortmund, Deutschland</p>
+            <p><strong>Vertreten durch:</strong><br>
+            Geschäftsführung / Founder: Miguel Gomes</p>
+            <p><strong>Kontakt:</strong><br>
+            E-Mail: kontakt@solviora.eu<br>
+            Web: [https://solviora.eu](https://solviora.eu)</p>
+            <p style="margin-top: 10px; font-size: 0.85rem;"><strong>Haftungsausschluss (Disclaimer):</strong> Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+        </div>
+
+        <div class="legal-box" id="datenschutz">
+            <h3>Datenschutzerklärung (Kurzfassung DSGVO)</h3>
+            <p>Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir verarbeiten Ihre Daten daher ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO, BDSG). Wenn Sie per E-Mail Kontakt mit uns aufnehmen, werden Ihre angegebenen Daten zwecks Bearbeitung des Anliegens gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Solviora UG. Alle Rechte vorbehalten.</p>
+        <p style="margin-top: 10px;">
+            <a href="#impressum">Impressum</a> | 
+            <a href="#datenschutz">Datenschutz</a> | 
+            <a href="mailto:kontakt@solviora.eu">Kontakt</a>
+        </p>
+    </footer>
+
+</body>
+</html>
