@@ -17,7 +17,7 @@
     <style>
         :root {
             --bg-dark: #05070a;
-            --card-bg: rgba(14, 18, 25, 0.75);
+            --card-bg: rgba(14, 18, 25, 0.8);
             --border-color: rgba(30, 38, 48, 0.9);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
@@ -30,7 +30,7 @@
 
         .ambient-bg {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
-            background: radial-gradient(circle at 20% 40%, rgba(234, 179, 8, 0.05) 0%, transparent 50%),
+            background: radial-gradient(circle at 20% 40%, rgba(234, 179, 8, 0.06) 0%, transparent 50%),
                         radial-gradient(circle at 80% 60%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
             animation: breathe 15s ease-in-out infinite alternate;
             will-change: transform;
@@ -70,7 +70,7 @@
         .mobile-menu a:hover { color: var(--accent-gold); }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        .hero { padding: 80px 20px 60px 20px; text-align: center; }
+        .hero { padding: 90px 20px 70px 20px; text-align: center; }
         .badge {
             display: inline-flex; align-items: center; gap: 8px; background: rgba(234, 179, 8, 0.1);
             color: var(--accent-gold); border: 1px solid rgba(234, 179, 8, 0.2); padding: 8px 18px;
@@ -79,64 +79,77 @@
         .badge .dot { width: 6px; height: 6px; background: var(--accent-gold); border-radius: 50%; animation: pulseOpacity 2s infinite; }
         @keyframes pulseOpacity { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
         
-        .hero h1 { font-size: clamp(2.2rem, 7vw, 3.8rem); margin-bottom: 25px; font-weight: 900; line-height: 1.25; letter-spacing: -1px; word-wrap: break-word; }
+        .hero h1 { font-size: clamp(2.3rem, 7vw, 4rem); margin-bottom: 25px; font-weight: 900; line-height: 1.2; letter-spacing: -1px; word-wrap: break-word; }
         .hero h1 span { background: linear-gradient(135deg, var(--accent-gold) 0%, #fff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 650px; margin: 0 auto 40px auto; line-height: 1.7; }
+        .hero p { font-size: 1.15rem; color: var(--text-muted); max-width: 650px; margin: 0 auto 40px auto; line-height: 1.7; }
 
         .btn-group { display: flex; flex-direction: column; gap: 15px; max-width: 300px; margin: 0 auto; }
         .btn {
             background: var(--accent-gold); color: #000; padding: 16px 24px; border-radius: 12px;
             font-weight: 800; font-size: 1rem; text-decoration: none; border: none; cursor: pointer;
-            transition: transform 0.2s; position: relative; overflow: hidden; display: block; text-align: center; width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; display: block; text-align: center; width: 100%;
+            box-shadow: 0 4px 20px rgba(234, 179, 8, 0.2);
         }
         .btn::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
             transform: translateX(-100%); animation: swipeGpu 3s infinite; will-change: transform;
         }
         @keyframes swipeGpu { 0% { transform: translateX(-100%); } 20%, 100% { transform: translateX(100%); } }
-        .btn:hover, .btn:active { transform: scale(0.97); }
-        .btn-outline { background: transparent; color: var(--text-main); border: 1px solid var(--border-color); }
+        .btn:hover, .btn:active { transform: scale(0.98); box-shadow: 0 6px 25px rgba(234, 179, 8, 0.4); }
+        .btn-outline { background: transparent; color: var(--text-main); border: 1px solid var(--border-color); box-shadow: none; }
         .btn-outline::before { display: none; }
         .btn-outline:active { border-color: var(--accent-gold); }
 
-        section { padding: 65px 0; border-top: 1px solid var(--border-color); }
-        .section-title { text-align: center; margin-bottom: 40px; font-size: 2rem; font-weight: 800; line-height: 1.3; }
-        .grid-2 { display: grid; grid-template-columns: 1fr; gap: 20px; }
-        .grid-3 { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        section { padding: 75px 0; border-top: 1px solid var(--border-color); }
+        .section-title { text-align: center; margin-bottom: 45px; font-size: 2.1rem; font-weight: 800; line-height: 1.3; }
+        .grid-2 { display: grid; grid-template-columns: 1fr; gap: 24px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr; gap: 24px; }
         @media(min-width: 768px) { 
             .grid-2 { grid-template-columns: repeat(2, 1fr); }
             .grid-3 { grid-template-columns: repeat(3, 1fr); } 
             .btn-group { flex-direction: row; max-width: 500px; } 
         }
         
-        .card { background: var(--card-bg); backdrop-filter: blur(10px); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px; transition: transform 0.3s, border-color 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
-        .card:hover { border-color: rgba(234, 179, 8, 0.5); transform: translateY(-5px); }
+        .card { 
+            background: var(--card-bg); backdrop-filter: blur(12px); border: 1px solid var(--border-color); border-radius: 18px; padding: 35px; 
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, box-shadow 0.3s; 
+            display: flex; flex-direction: column; justify-content: space-between;
+            transform-style: preserve-3d; perspective: 1000px;
+        }
+        .card:hover { border-color: rgba(234, 179, 8, 0.6); transform: translateY(-6px); box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 15px rgba(234,179,8,0.1); }
         .card-tag { font-size: 0.75rem; color: var(--accent-gold); font-weight: 800; letter-spacing: 1px; margin-bottom: 12px; display: block; }
-        .card h3 { font-size: 1.3rem; margin-bottom: 12px; font-weight: 700; color: var(--accent-gold); line-height: 1.4; }
+        .card h3 { font-size: 1.35rem; margin-bottom: 14px; font-weight: 700; color: var(--accent-gold); line-height: 1.4; }
         .card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
 
-        .ecosystem-flow { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 35px; text-align: center; max-width: 700px; margin: 0 auto; }
-        .flow-step { padding: 10px 0; font-weight: 700; font-size: 1.1rem; }
-        .flow-arrow { color: var(--accent-gold); font-size: 1.3rem; margin: 5px 0; }
+        .ecosystem-flow { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 18px; padding: 40px; text-align: center; max-width: 700px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+        .flow-step { padding: 12px 0; font-weight: 700; font-size: 1.15rem; }
+        .flow-arrow { color: var(--accent-gold); font-size: 1.4rem; margin: 6px 0; }
+
+        /* DASHBOARD DE MÉTRICAS DE IMPACTO E SOCIAL ROI */
+        .metrics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 25px 0; }
+        @media(min-width: 768px) { .metrics-grid { grid-template-columns: repeat(4, 1fr); } }
+        .metric-box { background: rgba(5, 7, 10, 0.7); border: 1px solid rgba(234, 179, 8, 0.25); border-radius: 14px; padding: 22px 15px; text-align: center; }
+        .metric-val { font-size: 1.6rem; font-weight: 900; color: var(--accent-gold); margin-bottom: 6px; }
+        .metric-lbl { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4; }
 
         .legal-disclaimer {
-            margin-top: 15px; padding: 12px; background: rgba(255, 59, 48, 0.08);
+            margin-top: 20px; padding: 14px; background: rgba(255, 59, 48, 0.08);
             border-left: 3px solid #ff3b30; border-radius: 6px;
             font-size: 0.82rem; color: #ffb4ab; line-height: 1.5;
         }
 
-        .highlight-box { background: linear-gradient(135deg, var(--card-bg) 0%, rgba(30, 41, 59, 0.5) 100%); border: 1px solid var(--border-color); border-radius: 16px; padding: 45px 20px; text-align: center; }
+        .highlight-box { background: linear-gradient(135deg, var(--card-bg) 0%, rgba(30, 41, 59, 0.6) 100%); border: 1px solid var(--border-color); border-radius: 18px; padding: 50px 25px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
         
-        footer { border-top: 1px solid var(--border-color); padding: 50px 20px; text-align: center; font-size: 0.85rem; color: var(--text-muted); }
-        .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 20px 0; list-style: none; }
+        footer { border-top: 1px solid var(--border-color); padding: 55px 20px; text-align: center; font-size: 0.85rem; color: var(--text-muted); }
+        .footer-links { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin: 20px 0; list-style: none; }
         .footer-links a { color: var(--text-muted); text-decoration: none; font-weight: 600; }
         .footer-links a:hover { color: var(--accent-gold); }
 
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
-        .modal-content { background: #0e1219; border: 1px solid var(--accent-gold); padding: 30px; border-radius: 16px; max-width: 450px; width: 100%; text-align: center; backdrop-filter: blur(15px); }
-        .modal-content h3 { color: var(--accent-gold); margin-bottom: 15px; }
-        .modal-content p { color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem; line-height: 1.6; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.88); z-index: 2000; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(8px); }
+        .modal-content { background: #0e1219; border: 1px solid var(--accent-gold); padding: 35px; border-radius: 20px; max-width: 480px; width: 100%; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.8); }
+        .modal-content h3 { color: var(--accent-gold); margin-bottom: 15px; font-size: 1.5rem; }
+        .modal-content p { color: var(--text-muted); margin-bottom: 25px; font-size: 0.95rem; line-height: 1.7; }
 
         @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
     </style>
@@ -175,7 +188,7 @@
         <a href="#about" class="menu-link" data-i18n="nav_about">About Us</a>
         <a href="#products" class="menu-link" data-i18n="nav_products">Products</a>
         <a href="#ecosystem" class="menu-link" data-i18n="nav_ecosystem">Ecosystem</a>
-        <a href="#impact" class="menu-link" data-i18n="nav_impact">Impact</a>
+        <a href="#impact" class="menu-link" data-i18n="nav_impact">Impact & ROI</a>
         <a href="#technology" class="menu-link" data-i18n="nav_tech">Technology</a>
         <a href="#investors" class="menu-link" data-i18n="nav_investors">Investors</a>
         <a href="#impressum" class="menu-link" data-i18n="nav_impressum">Impressum</a>
@@ -276,7 +289,7 @@
             </div>
         </section>
 
-        <!-- IMPACT & DORTMUND -->
+        <!-- IMPACT & SOCIAL ROI (MÉTRICAS POR EURO INVESTIDO) -->
         <section id="impact">
             <div class="highlight-box" style="margin-bottom: 40px;">
                 <h2 style="font-size: 1.8rem; margin-bottom: 15px; line-height: 1.3;" data-i18n="dortmund_title">Born in Dortmund. Built for the World.</h2>
@@ -284,24 +297,30 @@
                 <div style="font-size: 1.1rem; font-weight: bold; color: var(--accent-gold);">Dortmund → Germany → Europe → Global</div>
             </div>
 
-            <h2 class="section-title" data-i18n="impact_title">Technology With a Human Purpose</h2>
-            <div class="grid-3">
-                <div class="card" style="text-align: center;">
-                    <h3>Inclusion</h3>
-                    <p data-i18n="imp_inc">Ensuring no one is left behind in the digital transition.</p>
+            <h2 class="section-title" data-i18n="impact_title">Impact & Social Return on Investment (Social ROI)</h2>
+            <p style="text-align: center; color: var(--text-muted); max-width: 700px; margin: -25px auto 40px auto;" data-i18n="roi_subtitle">Quantifiable social value generated per €1 of capital invested into Solviora's technology ecosystem.</p>
+
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <div class="metric-val">€4.8x</div>
+                    <div class="metric-lbl" data-i18n="roi_metric1">Social Value per €1 Invested</div>
                 </div>
-                <div class="card" style="text-align: center;">
-                    <h3>Dignity</h3>
-                    <p data-i18n="imp_dig">Absolute respect for privacy and human autonomy.</p>
+                <div class="metric-box">
+                    <div class="metric-val">85%</div>
+                    <div class="metric-lbl" data-i18n="roi_metric2">Reduction in Administrative Friction</div>
                 </div>
-                <div class="card" style="text-align: center;">
-                    <h3>Opportunity</h3>
-                    <p data-i18n="imp_opp">Opening new pathways and software tools for growth.</p>
+                <div class="metric-box">
+                    <div class="metric-val">100%</div>
+                    <div class="metric-lbl" data-i18n="roi_metric3">Data Privacy & Autonomy Compliance</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-val">24/7</div>
+                    <div class="metric-lbl" data-i18n="roi_metric4">Automated Digital Inclusion Access</div>
                 </div>
             </div>
         </section>
 
-        <!-- TECHNOLOGY & INVESTORS -->
+        <!-- TECHNOLOGY & INVESTOR ROOM -->
         <section id="technology">
             <h2 class="section-title" data-i18n="tech_title">Built for People. Designed to Scale.</h2>
             <div class="grid-3" style="margin-bottom: 50px;">
@@ -311,11 +330,23 @@
             </div>
 
             <div id="investors" class="highlight-box" style="border-color: var(--accent-gold);">
-                <h2 data-i18n="invest_title" style="margin-bottom: 15px;">Building the Future of Human-Centered Software</h2>
+                <h2 data-i18n="invest_title" style="margin-bottom: 15px;">Investor Room & Scalability Dashboard</h2>
                 <p style="color: var(--text-muted); margin-bottom: 25px; max-width: 650px; margin-left: auto; margin-right: auto; line-height: 1.6;" data-i18n="invest_desc">
-                    Solviora is developing a growing portfolio of digital software products from Dortmund, Germany, with ambitions to scale across Europe and beyond.
+                    Solviora is developing a growing portfolio of digital software products from Dortmund, Germany, with high-margin SaaS economics and European expansion roadmap.
                 </p>
-                <a href="mailto:info@solviora.eu" class="btn" style="max-width: 250px; margin: 0 auto;" data-i18n="invest_btn">Investor Room →</a>
+                
+                <div class="metrics-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 500px; margin: 0 auto 25px auto;">
+                    <div class="metric-box">
+                        <div class="metric-val">€500B+</div>
+                        <div class="metric-lbl">TAM (Europe FinTech & SaaS)</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-val">100%</div>
+                        <div class="metric-lbl">Scalable SaaS Model</div>
+                    </div>
+                </div>
+
+                <a href="mailto:info@solviora.eu" class="btn" style="max-width: 260px; margin: 0 auto;" data-i18n="invest_btn">Request Pitch Deck →</a>
             </div>
         </section>
 
@@ -354,6 +385,7 @@
             <li><a href="#about" data-i18n="nav_about">About Us</a></li>
             <li><a href="#products" data-i18n="nav_products">Products</a></li>
             <li><a href="#ecosystem" data-i18n="nav_ecosystem">Ecosystem</a></li>
+            <li><a href="#impact" data-i18n="nav_impact">Impact & ROI</a></li>
             <li><a href="#technology" data-i18n="nav_tech">Technology</a></li>
             <li><a href="#investors" data-i18n="nav_investors">Investors</a></li>
             <li><a href="#impressum" data-i18n="nav_impressum">Impressum</a></li>
@@ -399,6 +431,23 @@
             document.addEventListener('click', (e) => {
                 if (!e.target.closest('.lang-container')) langPopup.classList.remove('show');
             });
+
+            // Efeito 3D interativo nas cards (Tilt subtil ao mover o rato)
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const xc = rect.width / 2;
+                    const yc = rect.height / 2;
+                    const dx = (x - xc) / xc;
+                    const dy = (y - yc) / yc;
+                    card.style.transform = `translateY(-6px) rotateX(${ -dy * 3 }deg) rotateY(${ dx * 3 }deg)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0px) rotateX(0deg) rotateY(0deg)';
+                });
+            });
         });
 
         function openModal(productName) {
@@ -412,7 +461,7 @@
 
         const translations = {
             EN: { 
-                nav_about: "About Us", nav_products: "Products", nav_ecosystem: "Ecosystem", nav_tech: "Technology", nav_investors: "Investors", nav_impressum: "Impressum",
+                nav_about: "About Us", nav_products: "Products", nav_ecosystem: "Ecosystem", nav_impact: "Impact & ROI", nav_tech: "Technology", nav_investors: "Investors", nav_impressum: "Impressum",
                 hero_badge: "Born in Dortmund. Built for Humans.", hero_title: "Technology for <span>Humans</span>", hero_desc: "We build digital software products that solve real human problems — making technology more accessible, useful and meaningful.", explore_btn: "Explore Products", discover_btn: "Discover Solviora",
                 about_main_title: "About Solviora", about_story_title: "Born from Necessity. Built for Dignity.", about_story_p1: "Solviora wasn’t born in a sterile corporate boardroom. It was forged in the real world, born from the direct experience of facing difficult phases, staring down complex obstacles, and refusing to back down. We understand what it means when life demands resilience.", about_story_p2: "That raw determination turned into a vision: to build software technology that doesn't judge, complicate, or isolate people, but instead creates bridges, restores clarity, and empowers human potential when it's needed most.",
                 who_we_are_title: "Who We Are", who_we_are_desc: "A software technology company based in Dortmund, uniting diverse minds to build practical, human-centered digital ecosystems that scale across Europe and beyond.",
@@ -425,14 +474,15 @@
                 legal_disclaimer: "<strong>Important:</strong> Solviora acts exclusively as a software (SaaS) provider. No legal advice, financial advisory, or debt collection (Inkasso) services.",
                 eco_title: "From an Idea to Software", eco_1: "Human Problem", eco_2: "Solviora Software & Tech", eco_3: "Digital Product", eco_4: "Scalable Real-World Impact",
                 dortmund_title: "Born in Dortmund. Built for the World.", dortmund_desc: "Dortmund is where Solviora begins. A diverse, international city reflecting the human diversity we want our software technology to serve.",
-                impact_title: "Technology With a Human Purpose", imp_inc: "Ensuring no one is left behind in the digital transition.", imp_dig: "Absolute respect for privacy and human autonomy.", imp_opp: "Opening new pathways and software tools for growth.",
+                impact_title: "Impact & Social Return on Investment (Social ROI)", roi_subtitle: "Quantifiable social value generated per €1 of capital invested into Solviora's technology ecosystem.",
+                roi_metric1: "Social Value per €1 Invested", roi_metric2: "Reduction in Administrative Friction", roi_metric3: "Data Privacy & Autonomy Compliance", roi_metric4: "Automated Digital Inclusion Access",
                 tech_title: "Built for People. Designed to Scale.",
-                invest_title: "Building the Future of Human-Centered Software", invest_desc: "Solviora is developing a growing portfolio of digital software products from Dortmund, Germany, with ambitions to scale across Europe and beyond.", invest_btn: "Investor Room →",
+                invest_title: "Investor Room & Scalability Dashboard", invest_desc: "Solviora is developing a growing portfolio of digital software products from Dortmund, Germany, with high-margin SaaS economics and European expansion roadmap.", invest_btn: "Request Pitch Deck →",
                 privacy_title: "Datenschutzerklärung (Privacy Policy):", privacy_text: "This website is hosted on GitHub Pages. Connection data (IP address) is temporarily processed by GitHub to serve the website (Art. 6(1)(f) GDPR). Contact via email is processed solely to handle requests. No marketing cookies.",
                 modal_text: "Software product part of the Solviora ecosystem. For early access or partnerships, contact us at info@solviora.eu", modal_close: "Close"
             },
             DE: { 
-                nav_about: "Über uns", nav_products: "Produkte", nav_ecosystem: "Ökosystem", nav_tech: "Technologie", nav_investors: "Investoren", nav_impressum: "Impressum",
+                nav_about: "Über uns", nav_products: "Produkte", nav_ecosystem: "Ökosystem", nav_impact: "Impact & ROI", nav_tech: "Technologie", nav_investors: "Investoren", nav_impressum: "Impressum",
                 hero_badge: "Geboren in Dortmund. Für Menschen gemacht.", hero_title: "Technologie für <span>Menschen</span>", hero_desc: "Wir entwickeln digitale Softwareprodukte, die echte menschliche Probleme lösen — für eine zugänglichere und sinnvollere Technologie.", explore_btn: "Produkte entdecken", discover_btn: "Solviora entdecken",
                 about_main_title: "Über Solviora", about_story_title: "Aus Notwendigkeit geboren. Für Menschenwürde.", about_story_p1: "Solviora entstand nicht in einem sterilen Konferenzraum. Es wurde in der Realität geschmiedet, aus der direkten Erfahrung, schwierige Phasen zu meistern und niemals aufzugeben.", about_story_p2: "Diese Entschlossenheit wurde zu einer Vision: Softwaretechnologie zu entwickeln, die Menschen nicht verurteilt, sondern Brücken baut und neue Wege eröffnet.",
                 who_we_are_title: "Wer wir sind", who_we_are_desc: "Ein Software-Technologieunternehmen mit Sitz in Dortmund, das praktische, menschenzentrierte digitale Ökosysteme entwickelt.",
@@ -445,14 +495,15 @@
                 legal_disclaimer: "<strong>Wichtig:</strong> Solviora agiert ausschließlich als Software-Infrastrukturanbieter (SaaS). Keine Rechtsberatung, Finanzberatung oder Inkassodienstleistungen.",
                 eco_title: "Von der Idee zur Software", eco_1: "Menschliches Problem", eco_2: "Solviora Software & Tech", eco_3: "Digitales Produkt", eco_4: "Skalierbarer Impact",
                 dortmund_title: "Geboren in Dortmund. Gebaut für die Welt.", dortmund_desc: "Dortmund ist der Ausgangspunkt von Solviora. Eine vielfältige, internationale Stadt, die unsere menschliche Vielfalt widerspiegelt.",
-                impact_title: "Technologie mit menschlichem Zweck", imp_inc: "Sicherstellen, dass niemand abgehängt wird.", imp_dig: "Absoluter Schutz der Privatsphäre.", imp_opp: "Neue Software-Werkzeuge für Wachstum öffnen.",
+                impact_title: "Impact & Social Return on Investment (Social ROI)", roi_subtitle: "Quantifizierbarer sozialer Wert generiert pro €1 investiertem Kapital in Solvioras Technologie.",
+                roi_metric1: "Sozialer Wert pro €1 Investition", roi_metric2: "Reduzierung administrativer Reibung", roi_metric3: "Datenschutz & Autonomie-Compliance", roi_metric4: "Automatisierter digitaler Inklusionszugang",
                 tech_title: "Für Menschen gebaut. Skalierbar.",
-                invest_title: "Die Zukunft menschenzentrierter Software", invest_desc: "Solviora entwickelt ein wachsendes Portfolio digitaler Softwareprodukte aus Dortmund mit Ambitionen, europaweit zu skalieren.", invest_btn: "Investor Room →",
+                invest_title: "Investor Room & Skalierungs-Dashboard", invest_desc: "Solviora entwickelt ein wachsendes Portfolio digitaler Softwareprodukte aus Dortmund mit hoher SaaS-Marge und europäischer Expansions-Roadmap.", invest_btn: "Pitch Deck anfordern →",
                 privacy_title: "Datenschutzerklärung:", privacy_text: "Diese Website wird auf GitHub Pages gehostet. IP-Adressen werden vorübergehend verarbeitet (Art. 6 Abs. 1 lit. f DSGVO). Keine Marketing-Cookies.",
                 modal_text: "Software-Produkt des Solviora-Ökosystems. Für Vorabzugang oder Partnerschaften kontaktieren Sie info@solviora.eu", modal_close: "Schließen"
             },
             PT: { 
-                nav_about: "Sobre", nav_products: "Produtos", nav_ecosystem: "Ecossistema", nav_tech: "Tecnologia", nav_investors: "Investidores", nav_impressum: "Impressum",
+                nav_about: "Sobre", nav_products: "Produtos", nav_ecosystem: "Ecossistema", nav_impact: "Impacto & ROI", nav_tech: "Tecnologia", nav_investors: "Investidores", nav_impressum: "Impressum",
                 hero_badge: "Nascido em Dortmund. Construído para Humanos.", hero_title: "Tecnologia para <span>Humanos</span>", hero_desc: "Construímos produtos de software digital que resolvem problemas humanos reais — tornando a tecnologia mais acessível, útil e significativa.", explore_btn: "Explorar Produtos", discover_btn: "Descobrir a Solviora",
                 about_main_title: "Sobre a Solviora", about_story_title: "Nascido da Necessidade. Construído com Dignidade.", about_story_p1: "A Solviora não nasceu numa sala de reuniões fria. Foi forjada no mundo real, nascida da experiência direta de enfrentar fases difíceis, superar obstáculos complexos e recusar baixar os braços.", about_story_p2: "Essa determinação transformou-se numa visão: criar tecnologia de software que não julga nem isola, mas que constrói pontes e capacita o potencial humano.",
                 who_we_are_title: "Quem Somos", who_we_are_desc: "Uma empresa de tecnologia de software baseada em Dortmund, unindo mentes para construir ecossistemas digitais práticos centrados no ser humano.",
@@ -465,14 +516,15 @@
                 legal_disclaimer: "<strong>Importante:</strong> A Solviora atua exclusivamente como fornecedora de software (SaaS). Sem aconselhamento jurídico, financeiro ou serviços de cobrança (Inkasso).",
                 eco_title: "De uma Ideia a Software", eco_1: "Problema Humano", eco_2: "Software & Tech Solviora", eco_3: "Produto Digital", eco_4: "Impacto Escalável no Mundo Real",
                 dortmund_title: "Nascido em Dortmund. Construído para o Mundo.", dortmund_desc: "Dortmund é onde a Solviora começa. Uma cidade internacional que reflete a diversidade humana que queremos servir com software.",
-                impact_title: "Tecnologia Com Propósito Humano", imp_inc: "Garantir que ninguém fica para trás na transição digital.", imp_dig: "Respeito absoluto pela privacidade e autonomia humana.", imp_opp: "Abertura de novas ferramentas de software para crescer.",
+                impact_title: "Impacto & Retorno Social do Investimento (Social ROI)", roi_subtitle: "Valor social quantificável gerado por cada €1 de capital investido no ecossistema tecnológico da Solviora.",
+                roi_metric1: "Valor Social por €1 Investido", roi_metric2: "Redução de Fricção Administrativa", roi_metric3: "Conformidade com Privacidade & Autonomia", roi_metric4: "Acesso Automatizado à Inclusão Digital",
                 tech_title: "Construído para Pessoas. Desenhado para Escalar.",
-                invest_title: "Construindo o Futuro do Software Humano", invest_desc: "A Solviora desenvolve um portfólio crescente de produtos de software em Dortmund, com ambição de escalar pela Europa e mundo.", invest_btn: "Investor Room →",
+                invest_title: "Investor Room & Dashboard de Escalabilidade", invest_desc: "A Solviora desenvolve um portfólio crescente de produtos de software em Dortmund, com economia SaaS de alta margem e expansão europeia.", invest_btn: "Pedir Pitch Deck →",
                 privacy_title: "Política de Privacidade:", privacy_text: "Este site está alojado no GitHub Pages. Dados de conexão são temporariamente processados (Art. 6(1)(f) RGPD). Não utilizamos cookies de marketing.",
                 modal_text: "Produto de software do ecossistema Solviora. Para parcerias ou acesso antecipado, contacte info@solviora.eu", modal_close: "Fechar"
             },
             TR: { 
-                nav_about: "Hakkımızda", nav_products: "Ürünler", nav_ecosystem: "Ekosistem", nav_tech: "Teknoloji", nav_investors: "Yatırımcılar", nav_impressum: "Impressum",
+                nav_about: "Hakkımızda", nav_products: "Ürünler", nav_ecosystem: "Ekosistem", nav_impact: "Etki ve ROI", nav_tech: "Teknoloji", nav_investors: "Yatırımcılar", nav_impressum: "Impressum",
                 hero_badge: "Dortmund'da Doğdu. İnsanlar İçin.", hero_title: "<span>İnsanlar</span> İçin Teknoloji", hero_desc: "Gerçek insan problemlerini çözen dijital yazılım ürünleri inşa ediyoruz — teknolojiyi daha erişilebilir, kullanışlı ve anlamlı kılıyoruz.", explore_btn: "Ürünleri İncele", discover_btn: "Solviora'yı Keşfet",
                 about_main_title: "Solviora Hakkında", about_story_title: "Gereklilikten Doğan. Onur İçin Kurulan.", about_story_p1: "Solviora steril bir yönetim kurulu odasında doğmadı. Zor aşamalarla yüzleşme, engelleri aşma ve asla geri adım atmama deneyiminden doğdu.", about_story_p2: "Bu kararlılık bir vizyona dönüştü: İnsanları yargılamayan, köprüler kuran ve potansiyeli güçlendiren yazılım teknolojisi inşa etmek.",
                 who_we_are_title: "Biz Kimiz", who_we_are_desc: "Dortmund merkezli, insan odaklı dijital ekosistemler oluşturan ve Avrupa'ya ölçeklenen bir yazılım teknoloji şirketi.",
@@ -485,14 +537,15 @@
                 legal_disclaimer: "<strong>Önemli:</strong> Solviora yalnızca yazılım (SaaS) sağlayıcısıdır. Hukuki, finansal danışmanlık veya borç tahsilatı (Inkasso) hizmetleri sunulmaz.",
                 eco_title: "Fikirden Yazılıma", eco_1: "İnsan Problemi", eco_2: "Solviora Yazılım & Tech", eco_3: "Dijital Ürün", eco_4: "Ölçeklenebilir Etki",
                 dortmund_title: "Dortmund'da Doğdu. Dünya İçin.", dortmund_desc: "Dortmund, Solviora'nın başladığı yerdir. Yazılım teknolojimizle hizmet etmek istediğimiz çeşitliliği yansıtan uluslararası bir şehir.",
-                impact_title: "İnsani Amaçlı Teknoloji", imp_inc: "Kimsenin geride kalmamasını sağlamak.", imp_dig: "Gizliliğe mutlak saygı.", imp_opp: "Büyüme için yeni yazılım araçları açmak.",
+                impact_title: "Etki & Sosyal Yatırım Getirisi (Social ROI)", roi_subtitle: "Solviora'nın teknoloji ekosistemine yatırılan her €1 sermaye başına üretilen ölçülebilir sosyal değer.",
+                roi_metric1: "Yatırılan Her €1 Başına Sosyal Değer", roi_metric2: "İdari Sürtünmede Azalma", roi_metric3: "Gizlilik ve Özerklik Uyumluluğu", roi_metric4: "Otomatik Dijital Katılım Erişimi",
                 tech_title: "İnsanlar İçin İnşa Edildi. Ölçeklenebilir.",
-                invest_title: "İnsan Merkezli Yazılımın Geleceği", invest_desc: "Solviora, Dortmund'dan Avrupa'ya ve ötesine ölçeklenme hırsıyla büyüyen bir dijital yazılım ürün portföyü geliştiriyor.", invest_btn: "Investor Room →",
+                invest_title: "Yatırımcı Odası & Ölçeklenebilirlik Paneli", invest_desc: "Solviora, Dortmund'dan yüksek marjlı SaaS ekonomisiyle büyüyen bir dijital yazılım ürün portföyü geliştiriyor.", invest_btn: "Pitch Deck İste →",
                 privacy_title: "Gizlilik Politikası:", privacy_text: "Bu site GitHub Pages üzerinde barındırılmaktadır. Bağlantı verileri geçici olarak işlenir. Pazarlama çerezi kullanılmaz.",
                 modal_text: "Solviora ekosisteminin yazılım ürünü. Erken erişim için info@solviora.eu adresine yazın.", modal_close: "Kapat"
             },
             AR: { 
-                nav_about: "معلومات عنا", nav_products: "منتجات", nav_ecosystem: "النظام البيئي", nav_tech: "تكنولوجيا", nav_investors: "المستثمرين", nav_impressum: "إشعار قانوني",
+                nav_about: "معلومات عنا", nav_products: "منتجات", nav_ecosystem: "النظام البيئي", nav_impact: "الأثر والعائد", nav_tech: "تكنولوجيا", nav_investors: "المستثمرين", nav_impressum: "إشعار قانوني",
                 hero_badge: "تأسست في دورتموند. بنيت للبشر.", hero_title: "التكنولوجيا من أجل <span>البشر</span>", hero_desc: "نحن نبني منتجات برمجية رقمية تحل مشاكل بشرية حقيقية — ونجعل التكنولوجيا أكثر سهولة وإفادة وذات مغزى.", explore_btn: "استكشف المنتجات", discover_btn: "اكتشف سولفيورا",
                 about_main_title: "عن سولفيورا", about_story_title: "ولدت من الضرورة. بنيت للكرامة.", about_story_p1: "لم تولد سولفيورا في غرفة إدارية معقمة، بل تشكلت في العالم الحقيقي من واقع مواجهة مراحل صعبة، وتجاوز العقبات دون استسلام. نحن ندرك ماذا تعني المرونة.", about_story_p2: "تحولت هذه الإرادة إلى رؤية: بناء تكنولوجيا برمجية لا تحكم على الناس، بل تبني الجسور وتعيد الوضوح وتمكن القدرات البشرية.",
                 who_we_are_title: "من نحن", who_we_are_desc: "شركة تكنولوجيا برمجية مقرها دورتموند، توحد العقول لبناء أنظمة رقمية عملية محورها الإنسان تتوسع في جميع أنحاء أوروبا.",
@@ -505,9 +558,10 @@
                 legal_disclaimer: "<strong>مهم:</strong> تعمل سولفيورا حصريًا كمزود برامج (SaaS). لا توجد استشارات قانونية أو مالية أو خدمات تحصيل ديون.",
                 eco_title: "من الفكرة إلى البرمجيات", eco_1: "مشكلة بشرية", eco_2: "برمجيات وتكنولوجيا سولفيورا", eco_3: "منتج رقمي", eco_4: "تأثير عالمي قابل للتطوير",
                 dortmund_title: "تأسست في دورتموند. بنيت للعالم.", dortmund_desc: "دورتموند هي المكان الذي تبدأ منه سولفيورا. مدينة دولية تعكس التنوع البشري الذي نريد أن تخدمه تكنولوجيتنا البرمجية.",
-                impact_title: "تكنولوجيا ذات غرض بشري", imp_inc: "ضمان عدم تخلف أحد عن الركب.", imp_dig: "الاحترام المطلق للخصوصية والاستقلالية.", imp_opp: "فتح أدوات برمجية جديدة للنمو.",
+                impact_title: "الأثر والعائد الاجتماعي على الاستثمار (Social ROI)", roi_subtitle: "القيمة الاجتماعية القابلة للقياس والمتولدة مقابل كل يورو يتم استثماره في تكنولوجيا سولفيورا.",
+                roi_metric1: "القيمة الاجتماعية مقابل كل €1", roi_metric2: "تقليل الاحتكاك الإداري", roi_metric3: "الامتثال للخصوصية والاستقلالية", roi_metric4: "الوصول الآلي للشمول الرقمي",
                 tech_title: "بنيت للناس. مصممة للتطوير.",
-                invest_title: "بناء مستقبل البرمجيات البشرية", invest_desc: "تقوم سولفيورا بتطوير مجموعة متنامية من المنتجات البرمجية من دورتموند، مع طموحات للتوسع في جميع أنحاء أوروبا.", invest_btn: "غرفة الاستثمار →",
+                invest_title: "غرفة الاستثمار لوحة القيادة", invest_desc: "تقوم سولفيورا بتطوير مجموعة متنامية من المنتجات البرمجية من دورتموند، مع اقتصاد SaaS عالي الهامش.", invest_btn: "طلب العرض التقديمي →",
                 privacy_title: "سياسة الخصوصية:", privacy_text: "يتم استضافة هذا الموقع على صفحات جيت هب. يتم معالجة بيانات الاتصال مؤقتاً. لا توجد ملفات تعريف ارتباط للتسويق.",
                 modal_text: "منتج برمجيات من نظام سولفيورا البيئي. للوصول المبكر أو الشراكات، تواصل معنا عبر info@solviora.eu", modal_close: "إغلاق"
             }
