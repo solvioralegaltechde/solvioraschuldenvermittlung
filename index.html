@@ -1,16 +1,154 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0d12'/><path d='M30 70 L50 30 L70 70' stroke='%23FFC800' stroke-width='8' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Solviora – Anonyme Schuldenvermittlung aus Dortmund. Diskret, fair, DSGVO-konform." />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Solviora – Anonyme Schuldenvermittlung aus Dortmund. Diskret, fair, DSGVO-konform.">
     <title>Solviora – Anonyme Schuldenvermittlung</title>
-    <meta property="og:title" content="Solviora – Anonyme Schuldenvermittlung" />
-    <meta property="og:description" content="Diskrete, faire Schuldenvermittlung aus Dortmund. DSGVO-konform, Frankfurt hosting." />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+            --accent-gold: #e3b341;
+            --border-color: #30363d;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(227, 179, 65, 0.15);
+            color: var(--accent-gold);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border: 1px solid rgba(227, 179, 65, 0.3);
+        }
+        h1 {
+            font-size: 2.2rem;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+        h1 span {
+            color: var(--accent-gold);
+        }
+        p.subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+        .section {
+            margin-bottom: 30px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 25px;
+        }
+        h2 {
+            font-size: 1.3rem;
+            color: var(--accent-gold);
+            margin-bottom: 12px;
+        }
+        ul {
+            list-style: none;
+        }
+        ul li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+            color: var(--text-main);
+        }
+        ul li::before {
+            content: "•";
+            color: var(--accent-gold);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .cta-box {
+            text-align: center;
+            margin-top: 40px;
+            padding: 25px;
+            background: rgba(22, 27, 34, 0.8);
+            border-radius: 8px;
+            border: 1px solid var(--accent-gold);
+        }
+        .btn {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: #000;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: opacity 0.2s;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="badge">MVP • Dortmund & Frankfurt</div>
+            <h1>Solviora | <span>Schuldenvermittlung</span></h1>
+            <p class="subtitle">Anonyme Schuldenvermittlung aus Dortmund. Diskret, fair und DSGVO-konform.</p>
+        </header>
+
+        <div class="section">
+            <h2>Über das Projekt</h2>
+            <p>Solviora vermittelt diskret zwischen Schuldnern und Gläubigern. Unsere Plattform bietet sicheres, strukturiertes B2B-Onboarding, transparente Erfolgsgebühren und modernste Zahlungsabwicklung – entwickelt für den deutschen Markt mit Schwerpunkt in Frankfurt und Dortmund.</p>
+        </div>
+
+        <div class="section">
+            <h2>Kernmerkmale</h2>
+            <ul>
+                <li>Anonyme und geschützte Fallbearbeitung nach höchsten Datenschutzstandards (DSGVO).</li>
+                <li>Transparente Struktur ohne versteckte Kosten und mit klaren Erfolgsmodellen.</li>
+                <li>Strategische Partnerschaften und skalierbare Finanzierungslösungen.</li>
+            </ul>
+        </div>
+
+        <div class="cta-box">
+            <h2>Kontakt & Investorenanfragen</h2>
+            <p>Möchten Sie mehr über unser Konzept erfahren oder Partnerschaften besprechen?</p>
+            <a href="mailto:kontakt@solviora.eu" class="btn">Kontakt aufnehmen</a>
+        </div>
+
+        <footer>
+            &copy; 2026 Solviora. Alle Rechte vorbehalten. Hosted via GitHub Pages.
+        </footer>
+    </div>
+</body>
 </html>
